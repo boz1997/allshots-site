@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AllShots — Pricing</title>
+  <meta name="description" content="AllShots event photo sharing: start free, then pay once per event. Small $3.99, Medium $14.99, Unlimited $29.99. Same prices on the web and in the App Store." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Pricing page only: reuse landing .plans, add a compact comparison table and an upgrade strip. */
+    .pricing-hero { text-align: center; max-width: 42rem; margin: 0 auto clamp(28px, 4vw, 44px); }
+    .pricing-hero h1 { font-size: clamp(34px, 5vw, 54px); margin: 0 0 12px; }
+    .pricing-hero p { color: var(--ink-soft); font-size: 18px; margin: 0; }
+    .channels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 34px auto 0; max-width: 46rem; }
+    @media (max-width: 640px) { .channels { grid-template-columns: 1fr; } }
+    .channel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow-sm); }
+    .channel h3 { margin: 0 0 6px; font-size: 18px; }
+    .channel p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+    .channel .tag { display: inline-block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--amber-dark); background: color-mix(in srgb, var(--amber) 14%, var(--card)); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+    .tablewrap { overflow-x: auto; margin-top: 40px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); }
+    table.compare { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 15px; }
+    .compare th, .compare td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    .compare th { font-family: var(--sans); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--paper-deep); }
+    .compare tr:last-child td { border-bottom: 0; }
+    .compare td.center, .compare th.center { text-align: center; }
+    .yes { color: var(--amber-dark); font-weight: 600; }
+    .no { color: var(--muted); }
+    .upgrades { margin-top: 40px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; }
+    .upgrades h2 { margin: 0 0 6px; font-size: 22px; }
+    .upgrades p { color: var(--ink-soft); margin: 0 0 14px; font-size: 15.5px; }
+    .upgrades ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 15px; display: grid; gap: 6px; }
+    .fine { color: var(--muted); font-size: 14px; margin-top: 28px; max-width: 46rem; }
+    .fine a { color: var(--amber-dark); }
+    .wrap.wide { max-width: var(--maxw); }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <a class="brand" href="index.html">All<span>Shots</span></a>
+    <nav>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refund-policy.html">Refunds</a>
+      <a href="support.html">Support</a>
+      <a href="imprint.html">Imprint</a>
+    </nav>
+  </header>
+
+  <div class="wrap wide">
+    <div class="pricing-hero">
+      <span class="kicker">Pricing</span>
+      <h1>Pay once, <span class="amber">per event.</span></h1>
+      <p>AllShots collects your guests' photos and videos in one shared album — they scan a QR code, no app needed. Start free. When the guest list grows, upgrade that one event. No subscriptions.</p>
+    </div>
+
+    <div class="plans">
+      <article class="plan">
+        <h3>Starter</h3>
+        <div class="price"><span class="amount">Free</span></div>
+        <p class="plan-sub">Perfect for small gatherings</p>
+        <ul>
+          <li>Up to 10 guests</li>
+          <li>50 photos</li>
+          <li>Live shared gallery</li>
+          <li>QR &amp; 6-digit code</li>
+          <li>Photos kept 7 days</li>
+        </ul>
+        <a class="btn btn-soft" href="index.html#get">Get started</a>
+      </article>
+
+      <article class="plan">
+        <h3>Small</h3>
+        <div class="price"><span class="amount">$3.99</span><span class="per">/ event</span></div>
+        <p class="plan-sub">A bigger guest list</p>
+        <ul>
+          <li>Up to 20 guests</li>
+          <li>Unlimited photos</li>
+          <li>Photos kept for the life of the event</li>
+          <li>Everything in Starter</li>
+        </ul>
+        <a class="btn btn-soft" href="index.html#get">Choose Small</a>
+      </article>
+
+      <article class="plan plan-pop">
+        <span class="plan-tag">Most popular</span>
+        <h3>Medium</h3>
+        <div class="price"><span class="amount">$14.99</span><span class="per">/ event</span></div>
+        <p class="plan-sub">For full-size celebrations</p>
+        <ul>
+          <li>Up to 50 guests</li>
+          <li>Unlimited photos</li>
+          <li>Memory book: written notes from guests</li>
+          <li>Voice memories: spoken messages</li>
+          <li>Everything in Small</li>
+        </ul>
+        <a class="btn btn-primary" href="index.html#get">Choose Medium</a>
+      </article>
+
+      <article class="plan">
+        <h3>Unlimited</h3>
+        <div class="price"><span class="amount">$29.99</span><span class="per">/ event</span></div>
+        <p class="plan-sub">The whole wedding, no limits</p>
+        <ul>
+          <li>Unlimited guests</li>
+          <li><strong>Video capture</strong></li>
+          <li>Everything in Medium</li>
+        </ul>
+        <a class="btn btn-soft" href="index.html#get">Go Unlimited</a>
+      </article>
+    </div>
+
+    <div class="channels">
+      <div class="channel">
+        <span class="tag">In the app</span>
+        <h3>Buy in the AllShots iPhone app</h3>
+        <p>Pay with your Apple ID. Apple is the seller; billing and refunds go through the App Store.</p>
+      </div>
+      <div class="channel">
+        <span class="tag">On the web</span>
+        <h3>Buy on allshots.app</h3>
+        <p>Pay by card from the host dashboard at <strong>host.allshots.app</strong>. Web purchases are sold by Paddle, our reseller and merchant of record, and appear in the app on the same event within minutes. Same prices, same plans.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table class="compare">
+        <thead>
+          <tr><th>What you get</th><th class="center">Starter</th><th class="center">Small</th><th class="center">Medium</th><th class="center">Unlimited</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Guests who can join</td><td class="center">10</td><td class="center">20</td><td class="center">50</td><td class="center">Unlimited</td></tr>
+          <tr><td>Photos</td><td class="center">50</td><td class="center">Unlimited</td><td class="center">Unlimited</td><td class="center">Unlimited</td></tr>
+          <tr><td>Videos (up to 90 s)</td><td class="center no">—</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">Yes</td></tr>
+          <tr><td>Memory book (written notes)</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">Yes</td><td class="center yes">Yes</td></tr>
+          <tr><td>Voice memories</td><td class="center no">—</td><td class="center no">—</td><td class="center yes">Yes</td><td class="center yes">Yes</td></tr>
+          <tr><td>Live shared gallery, QR &amp; code, disposable mode</td><td class="center yes">Yes</td><td class="center yes">Yes</td><td class="center yes">Yes</td><td class="center yes">Yes</td></tr>
+          <tr><td>Full album download (ZIP)</td><td class="center yes">Yes</td><td class="center yes">Yes</td><td class="center yes">Yes</td><td class="center yes">Yes</td></tr>
+          <tr><td>Photos kept</td><td class="center">7 days</td><td class="center">Life of the event</td><td class="center">Life of the event</td><td class="center">Life of the event</td></tr>
+          <tr><td>Price</td><td class="center">Free</td><td class="center">$3.99</td><td class="center">$14.99</td><td class="center">$29.99</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="upgrades">
+      <h2>Already bought a plan? Upgrade for the difference.</h2>
+      <p>If your guest list outgrows the plan you chose, you pay only the gap, never the full price twice.</p>
+      <ul>
+        <li>Small → Medium: <strong>$10.99</strong></li>
+        <li>Small → Unlimited: <strong>$25.99</strong></li>
+        <li>Medium → Unlimited: <strong>$14.99</strong></li>
+      </ul>
+    </div>
+
+    <p class="fine">All plans are one-time purchases for a single event; nothing renews. Prices are in US dollars and may vary by region; local taxes may apply at checkout. Web purchases are sold by Paddle.com Market Ltd. (UK) / Paddle.com Inc. (US) as reseller and merchant of record; in-app purchases are sold by Apple. See our <a href="refund-policy.html">Refund Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
+
+    <p class="muted"><a href="index.html">← Back to AllShots</a></p>
+  </div>
+</body>
+</html>
