@@ -6,7 +6,7 @@
     en: {
       'meta.title': 'AllShots — Every guest is a photographer',
       'meta.desc': 'AllShots turns every event guest into a photographer. Scan a QR, shoot from the browser or app, and relive the whole night in one shared, live gallery.',
-      'nav.how': 'How it works', 'nav.features': 'Features', 'nav.pricing': 'Pricing', 'nav.faq': 'FAQ',
+      'nav.how': 'How it works', 'nav.features': 'Features', 'nav.pricing': 'Pricing', 'nav.faq': 'FAQ', 'nav.host': 'Host dashboard',
       'nav.openCamera': 'Open guest camera',
       'hero.eyebrow': 'The guest camera for events',
       'hero.title': 'Every guest is a<br /><span class="ink-serif amber">photographer.</span>',
@@ -88,7 +88,7 @@
     tr: {
       'meta.title': 'AllShots — Her misafir bir fotoğrafçı',
       'meta.desc': 'AllShots etkinliğindeki her misafiri fotoğrafçıya dönüştürür. QR tara, tarayıcıdan ya da uygulamadan çek, tüm geceyi tek bir ortak ve canlı galeride yeniden yaşa.',
-      'nav.how': 'Nasıl çalışır', 'nav.features': 'Özellikler', 'nav.pricing': 'Fiyatlar', 'nav.faq': 'SSS',
+      'nav.how': 'Nasıl çalışır', 'nav.features': 'Özellikler', 'nav.pricing': 'Fiyatlar', 'nav.faq': 'SSS', 'nav.host': 'Host paneli',
       'nav.openCamera': 'Misafir kamerasını aç',
       'hero.eyebrow': 'Etkinlikler için misafir kamerası',
       'hero.title': 'Her misafir bir<br /><span class="ink-serif amber">fotoğrafçı.</span>',
@@ -170,7 +170,7 @@
     es: {
       'meta.title': 'AllShots — Cada invitado es un fotógrafo',
       'meta.desc': 'AllShots convierte a cada invitado en fotógrafo. Escanea un QR, dispara desde el navegador o la app y revive toda la noche en una galería compartida y en vivo.',
-      'nav.how': 'Cómo funciona', 'nav.features': 'Funciones', 'nav.pricing': 'Precios', 'nav.faq': 'FAQ',
+      'nav.how': 'Cómo funciona', 'nav.features': 'Funciones', 'nav.pricing': 'Precios', 'nav.faq': 'FAQ', 'nav.host': 'Panel del anfitrión',
       'nav.openCamera': 'Abrir cámara de invitados',
       'hero.eyebrow': 'La cámara de invitados para eventos',
       'hero.title': 'Cada invitado es un<br /><span class="ink-serif amber">fotógrafo.</span>',
@@ -252,7 +252,7 @@
     fr: {
       'meta.title': 'AllShots — Chaque invité est un photographe',
       'meta.desc': 'AllShots transforme chaque invité en photographe. Scannez un QR, photographiez depuis le navigateur ou l’app, et revivez toute la soirée dans une galerie partagée en direct.',
-      'nav.how': 'Comment ça marche', 'nav.features': 'Fonctions', 'nav.pricing': 'Tarifs', 'nav.faq': 'FAQ',
+      'nav.how': 'Comment ça marche', 'nav.features': 'Fonctions', 'nav.pricing': 'Tarifs', 'nav.faq': 'FAQ', 'nav.host': 'Espace hôte',
       'nav.openCamera': 'Ouvrir la caméra invité',
       'hero.eyebrow': 'La caméra invité pour vos événements',
       'hero.title': 'Chaque invité est un<br /><span class="ink-serif amber">photographe.</span>',
@@ -334,7 +334,7 @@
     de: {
       'meta.title': 'AllShots — Jeder Gast ist ein Fotograf',
       'meta.desc': 'AllShots macht jeden Gast zum Fotografen. QR scannen, im Browser oder in der App fotografieren und die ganze Nacht in einer gemeinsamen Live-Galerie erleben.',
-      'nav.how': 'So funktioniert’s', 'nav.features': 'Funktionen', 'nav.pricing': 'Preise', 'nav.faq': 'FAQ',
+      'nav.how': 'So funktioniert’s', 'nav.features': 'Funktionen', 'nav.pricing': 'Preise', 'nav.faq': 'FAQ', 'nav.host': 'Gastgeber-Bereich',
       'nav.openCamera': 'Gästekamera öffnen',
       'hero.eyebrow': 'Die Gästekamera für Events',
       'hero.title': 'Jeder Gast ist ein<br /><span class="ink-serif amber">Fotograf.</span>',
