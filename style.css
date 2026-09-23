@@ -119,7 +119,8 @@ header.site > nav a.btn:hover { color: var(--cream); text-decoration: none; }
 /* legacy pages under 768 px: brand row, then the nav as one row that scrolls sideways inside itself */
 @media (max-width: 767.98px) {
   body:not(.home) header.site { flex-wrap: wrap; row-gap: 0; }
-  body:not(.home) header.site > nav { flex: 1 0 100%; overflow-x: auto; scrollbar-width: none; margin-inline: -10px; }
+  body:not(.home) header.site > nav { flex: 1 0 100%; overflow-x: auto; scrollbar-width: none; margin-inline: -8px calc(-1 * var(--margin)); padding-inline-end: 24px; }  /* runs to the screen edge: the next link peeks */
+  body:not(.home) header.site > nav a { padding: 0 8px; }
   body:not(.home) header.site > nav::-webkit-scrollbar { display: none; }
 }
 
@@ -166,7 +167,12 @@ th, td { text-align: left; }
 .plans .plan:last-child :is(.per, .plan-sub) { color: var(--ox-soft); }
 .plans .plan:last-child ul, .plans .plan:last-child li { border-color: rgba(246, 236, 224, .2); }
 .plans .plan:last-child li::before { background: var(--amber-light); }
-.plans .plan:last-child .btn-soft { background: var(--ox-text); color: var(--oxblood); }
+.plans .plan:not(:last-child) .btn-primary { background: var(--paper-deep); color: var(--ink); }
+.plans .plan:not(:last-child) .btn-primary:hover { background: var(--line); color: var(--ink); }
+.plans .plan:last-child :is(.btn-soft, .btn-primary) { background: var(--ox-text); color: var(--oxblood); }
+.plans .plan:last-child :is(.btn-soft, .btn-primary):hover { background: #FFFFFF; color: var(--oxblood); }
+html body .pricing-hero { text-align: start; max-width: 62ch; margin-inline: 0; }
+html body .channels { margin-inline: 0; }
 .plans .plan:last-child :focus-visible { outline-color: var(--ox-text); }
 
 /* FAQ (guides and home): a hairline list with a CSS +/− */
@@ -194,6 +200,16 @@ th, td { text-align: left; }
 .wrap footer a:hover { color: var(--ink); text-decoration: underline; }
 .wrap footer p { margin: 12px 0 0; font-size: var(--t-small); color: var(--ink-muted); }
 
+/* guides and use cases: header photos are prints (2 px, no frame; inline photos carry no shadow, §4.5) with a hairline caption */
+html body .guide figure img { border: 0; border-radius: var(--r-print); box-shadow: none; }
+html body .guide figcaption { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+/* guides/index.html: a hairline list, not a wall of cards */
+html body .guides ul { gap: 0; border-top: 1px solid var(--line); }
+html body .guides li.card { padding: 20px 0 22px; background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+html body .guides li.card a { font: 700 1.25rem/1.3 var(--serif); letter-spacing: -.01em; }
+html body .guides li.card a strong { font-weight: 700; }
+html body .guides li.card p { color: var(--ink-soft); font-size: var(--t-small); }
+
 /* ---------- legacy page overrides: page-local and inline rules under 15 px, lifted to 15 px ---------- */
 html body .fine, html body .compare th, html body .channel .tag,
 html body .guide figcaption, html body .guide .meta, html body header.site nav .btn { font-size: var(--t-small); }
@@ -208,3 +224,14 @@ html body .card .muted[style*="font-size"], html body #openAppLink { font-size: 
   .btn, .btn-primary, .btn-soft { border: 1.5px solid ButtonText; }
   .faq summary::before, .faq summary::after { background: CanvasText; forced-color-adjust: none; }
 }
+
+/* ---------- HOST SWITCH (brief §10, Berk 23 Sep: host dashboard links ON) ----------
+   Home: nav + menu "Host dashboard", hero "Create your first event", the end of faq.a2, footer "Host dashboard" carry
+   [data-host]; the pricing line price.f5 ("upgrade … on the web") carries [data-host-upgrade]. The guides' and use cases'
+   host buttons are matched by their href. If host.allshots.app is not live, uncomment the first rule (the hero then shows
+   "Take a test shot"); if web upgrades are not live, uncomment the second. */
+a.host-alt { display: none; }
+/* [data-host], .btn[href^="https://host.allshots.app"] { display: none !important; } a.host-alt { display: inline-flex !important; } */
+/* Second switch ON (24 Sep): the live dashboard's Upgrade still says "coming soon" and pricing.html agrees (02 rule 4).
+   Comment it out only once the dashboard's Upgrade opens checkout. */
+[data-host-upgrade] { display: none !important; }

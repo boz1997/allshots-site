@@ -1,16 +1,20 @@
 <!doctype html>
 <!--
-  AllShots home, direction "Flash" (research/04-brief.md). Copy: brief §2, every visible string has a data-i18n key
-  (i18n.js; the EN dictionary equals this file's content). Layout: brief §6. Two night bands (#disposable, #get),
-  one oxblood column (Unlimited), the shot counter as the signature, pill buttons, radii 2 / 20 / pill.
-  Markers: REPLACE with device capture (UI re-creations), PENDING: host DNS, PENDING: upgrade SKUs,
-  OPTIONAL:pro-line (on by default). No real event code appears anywhere on this page.
+  AllShots home, "Flash" (research/04-brief.md; notes: build/NOTES.md). Every visible string has a data-i18n key;
+  i18n.js holds EN (= this file), assets/i18n/<lang>.js the rest. Markers: REPLACE with device capture, PENDING: upgrade
+  SKUs, OPTIONAL:pro-line (on). No real event code on this page.
+  HOST LINKS (brief §10: ON) carry data-host: nav + menu "Host dashboard", hero "Create your first event", the end of
+  faq.a2, footer "Host dashboard"; price.f5 carries data-host-upgrade (hidden until web upgrades are live). Switches: HOST SWITCH, end of style.css.
+  On localhost, assets/site.js points them at http://localhost:5173.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches)document.documentElement.classList.add('motion');</script>
+<script>(function(h,d){h.classList.add('js');if(matchMedia('(prefers-reduced-motion: no-preference)').matches)h.classList.add('motion');
+/* the language, picked as i18n.js picks it: a non-English visitor's dictionary starts loading now and the page waits for it (≤ 1.5 s), so there is no English flash */
+var S=['en','tr','es','fr','de'],l=null,ok=function(v){return S.indexOf(v)>=0};try{l=new URLSearchParams(location.search).get('lang')}catch(e){}if(!ok(l)){try{l=localStorage.getItem('gc_lang')}catch(e){l=null}}if(!ok(l))l=(navigator.language||'en').slice(0,2).toLowerCase();
+if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script');s.src='/assets/i18n/'+l+'.js';s.async=true;s.setAttribute('data-lang-file',l);s.onerror=function(){h.classList.remove('i18n-wait')};d.head.appendChild(s);setTimeout(function(){h.classList.remove('i18n-wait')},1500)}})(document.documentElement,document);</script>
 <title>AllShots — Every guest is a photographer</title>
 <meta name="description" content="Share one QR code and every guest shoots into one live album, from the app or the phone’s browser. Free for up to 10 guests, one-time price per event.">
 <meta name="color-scheme" content="light">
@@ -53,11 +57,14 @@
   <symbol id="i-inf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8"/></symbol>
   <symbol id="i-prev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
   <symbol id="i-next" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <!-- Lucide "users" and "lock" (ISC), the icons of the app's Gallery setting -->
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.128a4 4 0 0 1 0 7.744M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3"/></symbol>
 </svg>
 <a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
 
-<!-- 0 · HEADER: brand · nav · Have a code? · language · Get the app (≥ 1100); brand · pill · menu (< 1100) -->
+<!-- 0 · HEADER: brand · nav · Have a code? · language · Get the app (≥ 1240); brand · pill · menu (< 1240) -->
 <header class="site">
   <a class="brand" href="/"><svg class="mark" viewBox="0 0 512 512" aria-hidden="true"><use href="#mark"/></svg>All<span>Shots</span></a>
   <nav class="nav-desktop" data-i18n-attr="aria-label:aria.nav" aria-label="Main">
@@ -65,13 +72,13 @@
     <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
     <a href="/guides/" data-i18n="nav.guides">Guides</a>
     <a href="#faq" data-i18n="nav.faq">FAQ</a>
-    <!-- PENDING: host DNS → <a href="https://host.allshots.app/" data-i18n="nav.host">Host dashboard</a> -->
+    <a href="https://host.allshots.app/" data-host data-i18n="nav.host">Host dashboard</a>
   </nav>
   <a class="nav-code" href="/app/" data-i18n="nav.code">Have a code?</a>
   <label class="lang lang-compact">
     <svg class="globe" aria-hidden="true"><use href="#i-globe"/></svg><span class="lang-code" aria-hidden="true"></span>
     <select id="lang-select" data-lang-select data-i18n-attr="aria-label:aria.lang" aria-label="Language">
-      <option value="en">English</option><option value="tr">Türkçe</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option>
+      <option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="es" lang="es">Español</option><option value="fr" lang="fr">Français</option><option value="de" lang="de">Deutsch</option>
     </select>
   </label>
   <a class="btn btn-sm head-cta" href="https://apps.apple.com/app/id6777402204" data-i18n="nav.getApp">Get the app</a>
@@ -83,12 +90,13 @@
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
         <a href="/guides/" data-i18n="nav.guides">Guides</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="https://host.allshots.app/" data-host data-i18n="nav.host">Host dashboard</a>
       </nav>
       <a class="menu-code" href="/app/" data-i18n="nav.code">Have a code?</a>
       <label class="lang lang-full">
         <svg class="globe" aria-hidden="true"><use href="#i-globe"/></svg>
         <select data-lang-select data-i18n-attr="aria-label:aria.lang" aria-label="Language">
-          <option value="en">English</option><option value="tr">Türkçe</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option>
+          <option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="es" lang="es">Español</option><option value="fr" lang="fr">Français</option><option value="de" lang="de">Deutsch</option>
         </select>
       </label>
     </div>
@@ -108,7 +116,8 @@
       <p class="lead only-narrow" data-i18n="hero.leadShort">Guests scan one QR code and start shooting. Every shot lands in one live album.</p>
       <div class="cta-row">
         <a class="btn" href="https://apps.apple.com/app/id6777402204" data-i18n="hero.cta">Get the app</a>
-        <a class="text-link arrow" href="#disposable" data-i18n="hero.try">Take a test shot</a>
+        <a class="text-link arrow" href="https://host.allshots.app/#/" data-host data-i18n="hero.host">Create your first event</a>
+        <a class="text-link arrow host-alt" href="#demo" data-i18n="hero.try">Take a test shot</a>
       </div>
       <p class="note" data-i18n="hero.note">Free for up to 10 guests. One-time price per event when you need more. No subscription needed.</p>
     </div>
@@ -174,9 +183,9 @@
       <h2 id="disp-title" class="h2" data-i18n="disp.title">The magic of not seeing the photo.</h2>
       <p class="lead" data-i18n="disp.body">No preview and no retakes: every shot uploads the moment it’s taken. Each guest gets a set number of shots, so every frame counts.</p>
       <p class="facts" data-i18n="disp.facts">Choose 10, 12, 24, 36, 48 or 72 shots per guest, or unlimited shots on the Unlimited plan. The no-preview camera is in the iPhone app; guests in a browser use their phone’s own camera, with the same shot count.</p>
-      <div class="cta-row only-wide"><a class="btn btn-night" href="https://apps.apple.com/app/id6777402204" data-i18n="disp.cta">Get the app</a></div>
+      <div class="cta-row"><a class="btn btn-night" href="https://apps.apple.com/app/id6777402204" data-i18n="disp.cta">Get the app</a></div>
     </div>
-    <div class="demo" data-demo>
+    <div class="demo" id="demo" data-demo>
       <div class="vf">
         <picture>
           <source type="image/avif" srcset="assets/img/demo-sofa-600.avif 600w, assets/img/demo-sofa-1040.avif 1040w" sizes="(min-width: 1200px) 520px, (min-width: 768px) 60vw, 100vw">
@@ -207,8 +216,6 @@
       <p class="inf-note" data-inf-note hidden data-i18n="aria.demoInf">Unlimited shots, on the Unlimited plan</p>
       <p class="demo-note" data-i18n="demo.note">A demo of the shot counter. Nothing is taken or uploaded.</p>
       <p class="sr-only" aria-live="polite" data-live></p>
-      <!-- phones: the button follows the demo (keeps every App Store button ≤ 4 screens apart, brief §2.0) -->
-      <div class="cta-row only-narrow demo-cta"><a class="btn btn-night" href="https://apps.apple.com/app/id6777402204" data-i18n="disp.cta">Get the app</a></div>
       <div hidden>
         <span data-i18n="demo.left" data-s="left">left</span>
         <span data-i18n="demo.last" data-s="last">Last one!</span>
@@ -226,7 +233,7 @@
     <ol class="steps">
       <li class="step">
         <!-- REPLACE with device capture: R2 is a faithful re-creation of create.tsx step 2 -->
-        <div class="step-vis"><div class="phone"><img src="assets/img/screen-create-640.webp" width="640" height="1387" loading="lazy" decoding="async" alt="The AllShots app’s event setup, with 24 shots per guest selected." data-i18n-attr="alt:alt.how1"></div></div>
+        <div class="step-vis step-cut"><div class="phone"><img src="assets/img/screen-create-640.webp" width="640" height="1387" loading="lazy" decoding="async" alt="The AllShots app’s event setup, with 24 shots per guest selected." data-i18n-attr="alt:alt.how1"></div></div>
         <p class="step-label" data-i18n="how.s1label">First</p>
         <h3 class="h3" data-i18n="how.s1title">Create your event.</h3>
         <p data-i18n="how.s1body">Name it, add the date and choose how many shots each guest gets. Your QR code is ready in the app, and you don’t need an account to start.</p>
@@ -244,8 +251,8 @@
         <p data-i18n="how.s2body">Pick one of 12 card designs with your QR code built in. Save it to Photos to print, or share it with the invite.</p>
       </li>
       <li class="step">
-        <!-- REPLACE with device capture: R7 is the store render of the gallery -->
-        <div class="step-vis"><div class="phone"><img src="assets/img/screen-gallery-640.webp" width="640" height="1388" loading="lazy" decoding="async" alt="The AllShots gallery in the app, with Select, Download All and ZIP." data-i18n-attr="alt:alt.how3"></div></div>
+        <!-- REPLACE with device capture: R7 night edition (tools/r7_night.py) -->
+        <div class="step-vis step-cut step-cut-grid"><div class="phone"><img src="assets/img/screen-gallery-640.webp" width="640" height="1388" loading="lazy" decoding="async" alt="The AllShots gallery in the app, with Select, Download All and ZIP." data-i18n-attr="alt:alt.how3"></div></div>
         <p class="step-label" data-i18n="how.s3label">After</p>
         <h3 class="h3" data-i18n="how.s3title">Relive it together.</h3>
         <p data-i18n="how.s3body">Every photo lands in one live album as it’s taken. When the night is over, download the whole event as one ZIP, on every plan.</p>
@@ -278,8 +285,9 @@
         <li><strong data-i18n="guests.p3t">Lost the card?</strong> <span data-i18n="guests.p3b">The 6-character code works too, at <a href="/app/">allshots.app/app</a>.</span></li>
         <li><strong data-i18n="guests.p4t">Words and voices too.</strong> <span data-i18n="guests.p4b">On Medium and Unlimited, guests can leave a written note or a voice message from the browser as well.</span></li>
       </ul>
+      <!-- phones-only pill: keeps App Store buttons ≤ 4 screens apart (brief §2.0) -->
       <div class="cta-row">
-        <a class="btn" href="https://apps.apple.com/app/id6777402204" data-i18n="hero.cta">Get the app</a>
+        <a class="btn only-narrow" href="https://apps.apple.com/app/id6777402204" data-i18n="hero.cta">Get the app</a>
         <a class="text-link arrow" href="/app/" data-i18n="guests.cta">Have a code? Open the camera</a>
       </div>
     </div>
@@ -338,12 +346,11 @@
           <h3 class="h3" data-i18n="feat.dTitle">Shared or private.</h3>
           <p data-i18n="feat.dBody">In a shared album, everyone who joins can browse every photo. In a private album, guests keep shooting and only you see the whole album.</p>
         </div>
-        <!-- REPLACE with device capture: R6, the Gallery setting on the host event screen (event.tsx 200–222) -->
-        <div class="ui-crop">
-          <picture>
-            <source type="image/avif" srcset="assets/img/gallery-mode-detail-600.avif 600w, assets/img/gallery-mode-detail-900.avif 900w" sizes="(min-width: 1200px) 360px, (min-width: 768px) 44vw, 100vw">
-            <img src="assets/img/gallery-mode-detail-600.webp" srcset="assets/img/gallery-mode-detail-600.webp 600w, assets/img/gallery-mode-detail-900.webp 900w" sizes="(min-width: 1200px) 360px, (min-width: 768px) 44vw, 100vw" width="900" height="374" loading="lazy" decoding="async" alt="The AllShots setting that chooses between a shared album and a private album." data-i18n-attr="alt:alt.featD">
-          </picture>
+        <!-- REPLACE with device capture: R6 as live HTML (event.tsx 200–222, the app's own strings in 5 languages) -->
+        <div class="gm" role="img" data-i18n-attr="aria-label:alt.featD" aria-label="The AllShots setting that chooses between a shared album and a private album.">
+          <p class="gm-sub" data-i18n="ui.galleryMode">Gallery</p>
+          <div class="gm-row is-on"><svg class="gm-ic" aria-hidden="true"><use href="#i-users"/></svg><p class="gm-t"><span class="gm-title" data-i18n="ui.galleryPublicTitle">Shared album</span><span class="gm-desc" data-i18n="ui.galleryPublicDesc">Everyone who joins can browse the photos</span></p><span class="gm-radio" aria-hidden="true"></span></div>
+          <div class="gm-row"><svg class="gm-ic" aria-hidden="true"><use href="#i-lock"/></svg><p class="gm-t"><span class="gm-title" data-i18n="ui.galleryPrivateTitle">Private album</span><span class="gm-desc" data-i18n="ui.galleryPrivateDesc">Guests keep shooting — only you can see the photos</span></p><span class="gm-radio" aria-hidden="true"></span></div>
         </div>
       </div>
 
@@ -352,8 +359,8 @@
           <h3 class="h3" data-i18n="feat.eTitle">The whole night, in one ZIP.</h3>
           <p data-i18n="feat.eBody">Download every photo and video as one ZIP, on every plan, free included.</p>
         </div>
-        <!-- REPLACE with device capture: R7 top crop (store render), cut by the tile's bottom edge -->
-        <div class="rise"><div class="phone phone-top"><img src="assets/img/screen-gallery-top-640.webp" width="640" height="730" loading="lazy" decoding="async" alt="The top of the AllShots gallery with Download All and ZIP." data-i18n-attr="alt:alt.featE"></div></div>
+        <!-- REPLACE with device capture: R7 night edition, top (tools/r7_night.py) -->
+        <div class="rise"><div class="phone phone-top"><img src="assets/img/screen-gallery-top-640.webp" width="640" height="956" loading="lazy" decoding="async" alt="The top of the AllShots gallery with Download All and ZIP." data-i18n-attr="alt:alt.featE"></div></div>
       </div>
 
       <div class="tile tile-f">
@@ -368,71 +375,95 @@
   </div>
 </section>
 
-<!-- 7 · OCCASIONS (compact, type only; our order, not the app's picker order) -->
+<!-- 7 · OCCASIONS (brief §11): "Made for [word]." + photo + caption rotate; site.js stacks the seven headlines in one cell, so nothing moves. No JS: list + thumbnails. -->
 <section class="occasions" id="occasions" aria-labelledby="occ-title">
-  <!-- 7 · OCCASIONS (Berk 23 Sep): the headline word rotates through the seven occasions with its photo.
-       Without JS: the static headline, the first photo and the full list of links. Frames per language: assets/site.js (OCC). -->
   <div class="shell occ-grid" data-occ-root>
     <div class="occ-copy">
-      <h2 id="occ-title" class="h2 occ-title"><span class="occ-static" data-i18n="occ.title">Made for weddings. Ready for every milestone.</span><span class="occ-live" aria-hidden="true" hidden><span data-occ-before>Made for </span><a class="occ-word" data-occ-word href="/guides/wedding-photo-sharing-app.html" tabindex="-1">weddings</a><span data-occ-after>.</span><span class="occ-line2" data-occ-line2>Ready for every milestone.</span></span></h2>
-      <ul class="occ-list">
-      <li><a href="/guides/wedding-photo-sharing-app.html" data-occ="0" data-i18n="occ.wed">Weddings</a></li>
-      <li><a href="/use-cases/birthday-party-photo-sharing.html" data-occ="1" data-i18n="occ.bday">Birthdays</a></li>
-      <li><a href="/use-cases/graduation-party-photo-sharing.html" data-occ="2" data-i18n="occ.grad">Graduations</a></li>
-      <li><a href="/use-cases/prom-photo-sharing.html" data-occ="3" data-i18n="occ.prom">Proms</a></li>
-      <li><a href="/use-cases/homecoming-photo-sharing.html" data-occ="4" data-i18n="occ.hoco">Homecoming</a></li>
-      <li><a href="/use-cases/baby-shower-photo-app.html" data-occ="5" data-i18n="occ.shower">Baby showers</a></li>
-      <li><a href="/use-cases/party-photo-sharing-app.html" data-occ="6" data-i18n="occ.party">Parties</a></li>
-      </ul>
+      <h2 id="occ-title" class="h2 occ-title"><span class="occ-static" data-i18n="occ.title">Made for weddings. Ready for every milestone.</span><span class="occ-live" aria-hidden="true" hidden></span></h2>
+      <div class="occ-listwrap">
+        <ul class="occ-list">
+          <li><a href="/guides/wedding-photo-sharing-app.html" data-occ="0" data-i18n="occ.wed">Weddings</a></li>
+          <li><a href="/use-cases/birthday-party-photo-sharing.html" data-occ="1" data-i18n="occ.bday">Birthdays</a></li>
+          <li><a href="/use-cases/graduation-party-photo-sharing.html" data-occ="2" data-i18n="occ.grad">Graduations</a></li>
+          <li><a href="/use-cases/prom-photo-sharing.html" data-occ="3" data-i18n="occ.prom">Proms</a></li>
+          <li><a href="/use-cases/homecoming-photo-sharing.html" data-occ="4" data-i18n="occ.hoco">Homecoming</a></li>
+          <li><a href="/use-cases/baby-shower-photo-app.html" data-occ="5" data-i18n="occ.shower">Baby showers</a></li>
+          <li><a href="/use-cases/party-photo-sharing-app.html" data-occ="6" data-i18n="occ.party">Parties</a></li>
+        </ul>
+      </div>
       <div class="occ-foot">
         <a class="text-link arrow" href="/guides/" data-i18n="occ.more">Read the guides</a>
         <button type="button" class="occ-pause" data-occ-pause hidden aria-pressed="false"><span class="sr-only" data-occ-pause-label>Pause</span><span class="occ-pause-icon" aria-hidden="true"></span></button>
       </div>
+      <div hidden>
+        <span data-s="frame" data-i18n="occ.frame">Made for {w}.</span>
+        <span data-s="line2" data-i18n="occ.line2">Ready for every milestone.</span>
+        <span data-s="w0" data-i18n="occ.hWed">weddings</span>
+        <span data-s="w1" data-i18n="occ.hBday">birthdays</span>
+        <span data-s="w2" data-i18n="occ.hGrad">graduations</span>
+        <span data-s="w3" data-i18n="occ.hProm">proms</span>
+        <span data-s="w4" data-i18n="occ.hHoco">homecoming</span>
+        <span data-s="w5" data-i18n="occ.hShower">baby showers</span>
+        <span data-s="w6" data-i18n="occ.hParty">parties</span>
+        <span data-s="pause" data-i18n="aria.occPause">Pause</span>
+        <span data-s="play" data-i18n="aria.occPlay">Play</span>
+      </div>
     </div>
-    <div class="occ-photos" data-occ-photos>
-      <a class="occ-photo is-on" href="/guides/wedding-photo-sharing-app.html" data-occ="0" tabindex="-1" aria-hidden="false">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-wedding-520.avif 520w, assets/img/occ-wedding-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-wedding-520.webp" srcset="assets/img/occ-wedding-520.webp 520w, assets/img/occ-wedding-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="The bride, barefoot with her shoes in one hand, spins with two friends on the dance floor.">
-        </picture>
-      </a>
-      <a class="occ-photo" href="/use-cases/birthday-party-photo-sharing.html" data-occ="1" tabindex="-1" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-birthday-520.avif 520w, assets/img/occ-birthday-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-birthday-520.webp" srcset="assets/img/occ-birthday-520.webp 520w, assets/img/occ-birthday-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A little boy with frosting on his nose grins over his birthday cake.">
-        </picture>
-      </a>
-      <a class="occ-photo" href="/use-cases/graduation-party-photo-sharing.html" data-occ="2" tabindex="-1" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-grad-520.avif 520w, assets/img/occ-grad-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-grad-520.webp" srcset="assets/img/occ-grad-520.webp 520w, assets/img/occ-grad-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A graduate in her gown and cap is hugged by her laughing father at a backyard party.">
-        </picture>
-      </a>
-      <a class="occ-photo" href="/use-cases/prom-photo-sharing.html" data-occ="3" tabindex="-1" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-prom-520.avif 520w, assets/img/occ-prom-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-prom-520.webp" srcset="assets/img/occ-prom-520.webp 520w, assets/img/occ-prom-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="Friends in gowns and suits laugh together on the dance floor at a formal.">
-        </picture>
-      </a>
-      <a class="occ-photo" href="/use-cases/homecoming-photo-sharing.html" data-occ="4" tabindex="-1" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-hoco-520.avif 520w, assets/img/occ-hoco-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-hoco-520.webp" srcset="assets/img/occ-hoco-520.webp 520w, assets/img/occ-hoco-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="Friends in rust and cream sweaters cheer around a backyard fire pit, one waving a pennant.">
-        </picture>
-      </a>
-      <a class="occ-photo" href="/use-cases/baby-shower-photo-app.html" data-occ="5" tabindex="-1" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-shower-520.avif 520w, assets/img/occ-shower-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-shower-520.webp" srcset="assets/img/occ-shower-520.webp 520w, assets/img/occ-shower-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A mother-to-be holds up a tiny knitted cardigan while her friends gasp and laugh.">
-        </picture>
-      </a>
-      <a class="occ-photo" href="/use-cases/party-photo-sharing-app.html" data-occ="6" tabindex="-1" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="assets/img/occ-party-520.avif 520w, assets/img/occ-party-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
-          <img src="assets/img/occ-party-520.webp" srcset="assets/img/occ-party-520.webp 520w, assets/img/occ-party-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="Friends around a long table under string lights laugh as the host carries out a big platter.">
-        </picture>
-      </a>
-    </div>
+    <figure class="occ-fig">
+      <div class="occ-photos">
+        <a class="occ-photo is-on" href="/guides/wedding-photo-sharing-app.html" data-occ="0" tabindex="-1" aria-hidden="false">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-wedding-520.avif 520w, assets/img/occ-wedding-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-wedding-520.webp" srcset="assets/img/occ-wedding-520.webp 520w, assets/img/occ-wedding-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="The bride, barefoot with her shoes in one hand, spins with two friends on the dance floor." data-i18n-attr="alt:alt.album3">
+          </picture>
+        </a>
+        <a class="occ-photo" href="/use-cases/birthday-party-photo-sharing.html" data-occ="1" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-birthday-520.avif 520w, assets/img/occ-birthday-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-birthday-520.webp" srcset="assets/img/occ-birthday-520.webp 520w, assets/img/occ-birthday-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A little boy with frosting on his nose grins over his birthday cake." data-i18n-attr="alt:alt.occ2">
+          </picture>
+        </a>
+        <a class="occ-photo" href="/use-cases/graduation-party-photo-sharing.html" data-occ="2" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-grad-520.avif 520w, assets/img/occ-grad-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-grad-520.webp" srcset="assets/img/occ-grad-520.webp 520w, assets/img/occ-grad-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A graduate in her gown and cap is hugged by her laughing father at a backyard party." data-i18n-attr="alt:alt.occ3">
+          </picture>
+        </a>
+        <a class="occ-photo" href="/use-cases/prom-photo-sharing.html" data-occ="3" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-prom-520.avif 520w, assets/img/occ-prom-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-prom-520.webp" srcset="assets/img/occ-prom-520.webp 520w, assets/img/occ-prom-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A young woman in a navy gown pins a white boutonniere on her date’s lapel on a crowded dance floor." data-i18n-attr="alt:alt.occ4">
+          </picture>
+        </a>
+        <a class="occ-photo" href="/use-cases/homecoming-photo-sharing.html" data-occ="4" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-hoco-520.avif 520w, assets/img/occ-hoco-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-hoco-520.webp" srcset="assets/img/occ-hoco-520.webp 520w, assets/img/occ-hoco-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="Friends in rust and cream sweaters cheer around a backyard fire pit, one waving a pennant." data-i18n-attr="alt:alt.occ5">
+          </picture>
+        </a>
+        <a class="occ-photo" href="/use-cases/baby-shower-photo-app.html" data-occ="5" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-shower-520.avif 520w, assets/img/occ-shower-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-shower-520.webp" srcset="assets/img/occ-shower-520.webp 520w, assets/img/occ-shower-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="A mother-to-be holds up a tiny knitted cardigan while her friends gasp and laugh." data-i18n-attr="alt:alt.occ6">
+          </picture>
+        </a>
+        <a class="occ-photo" href="/use-cases/party-photo-sharing-app.html" data-occ="6" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="assets/img/occ-party-520.avif 520w, assets/img/occ-party-900.avif 900w" sizes="(min-width: 900px) 34vw, 80vw">
+            <img src="assets/img/occ-party-520.webp" srcset="assets/img/occ-party-520.webp 520w, assets/img/occ-party-900.webp 900w" sizes="(min-width: 900px) 34vw, 80vw" width="900" height="1125" loading="lazy" decoding="async" alt="Friends around a long table under string lights laugh as the host carries out a big platter." data-i18n-attr="alt:alt.occ7">
+          </picture>
+        </a>
+      </div>
+      <figcaption class="cap occ-caps">
+        <span class="occ-cap is-on" data-i18n="occ.cap1">The last song, shoes in hand.</span>
+        <span class="occ-cap" data-i18n="occ.cap2">Frosting on his nose, candles still lit.</span>
+        <span class="occ-cap" data-i18n="occ.cap3">Her dad’s hug, cap still on.</span>
+        <span class="occ-cap" data-i18n="occ.cap4">The boutonniere, pinned on the dance floor.</span>
+        <span class="occ-cap" data-i18n="occ.cap5">Around the fire pit after the game.</span>
+        <span class="occ-cap" data-i18n="occ.cap6">The tiny cardigan gets the biggest laugh.</span>
+        <span class="occ-cap" data-i18n="occ.cap7">Dinner comes out under the string lights.</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -444,52 +475,60 @@
   </div>
   <div class="shell tiers">
     <section class="tier" style="--h:76" aria-labelledby="tier-1">
-      <h3 id="tier-1" class="tier-name" data-i18n="price.n1">Starter</h3>
-      <p class="tier-price tier-free" data-i18n="price.free">Free</p>
+      <div class="tier-head">
+        <h3 id="tier-1" class="tier-name" data-i18n="price.n1">Starter</h3>
+        <p class="tier-price tier-free" data-i18n="price.free">Free</p>
+      </div>
       <dl class="tier-rows">
         <div><dt data-i18n="price.rGuests">Guests</dt><dd>10</dd></div>
         <div><dt data-i18n="price.rPhotos">Photos</dt><dd data-i18n="price.v50">50 in total</dd></div>
-        <div><dt data-i18n="price.rShots">Shots per guest</dt><dd data-i18n="price.vShots">10 to 72</dd></div>
+        <div class="row-shots"><dt data-i18n="price.rShots">Shots per guest</dt><dd data-i18n="price.vShots">10 to 72</dd></div>
         <div><dt data-i18n="price.rVideo">Video</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
-        <div><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.v7">7 days after the first upload</dd></div>
+        <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.v7">7 days after the first upload</dd></div>
       </dl>
     </section>
     <section class="tier" style="--h:82" aria-labelledby="tier-2">
-      <h3 id="tier-2" class="tier-name" data-i18n="price.n2">Small</h3>
-      <p class="tier-price">$3.99 <span class="tier-per" data-i18n="price.per">per event</span></p>
+      <div class="tier-head">
+        <h3 id="tier-2" class="tier-name" data-i18n="price.n2">Small</h3>
+        <p class="tier-price">$3.99 <span class="tier-per" data-i18n="price.per">per event</span></p>
+      </div>
       <dl class="tier-rows">
         <div><dt data-i18n="price.rGuests">Guests</dt><dd>20</dd></div>
         <div><dt data-i18n="price.rPhotos">Photos</dt><dd data-i18n="price.vUnl">Unlimited</dd></div>
-        <div><dt data-i18n="price.rShots">Shots per guest</dt><dd data-i18n="price.vShots">10 to 72</dd></div>
+        <div class="row-shots"><dt data-i18n="price.rShots">Shots per guest</dt><dd data-i18n="price.vShots">10 to 72</dd></div>
         <div><dt data-i18n="price.rVideo">Video</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
-        <div><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
+        <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
       </dl>
     </section>
     <section class="tier" style="--h:90" aria-labelledby="tier-3">
-      <h3 id="tier-3" class="tier-name" data-i18n="price.n3">Medium</h3>
-      <p class="tier-price">$14.99 <span class="tier-per" data-i18n="price.per">per event</span></p>
+      <div class="tier-head">
+        <h3 id="tier-3" class="tier-name" data-i18n="price.n3">Medium</h3>
+        <p class="tier-price">$14.99 <span class="tier-per" data-i18n="price.per">per event</span></p>
+      </div>
       <dl class="tier-rows">
         <div><dt data-i18n="price.rGuests">Guests</dt><dd>50</dd></div>
         <div><dt data-i18n="price.rPhotos">Photos</dt><dd data-i18n="price.vUnl">Unlimited</dd></div>
-        <div><dt data-i18n="price.rShots">Shots per guest</dt><dd data-i18n="price.vShots">10 to 72</dd></div>
+        <div class="row-shots"><dt data-i18n="price.rShots">Shots per guest</dt><dd data-i18n="price.vShots">10 to 72</dd></div>
         <div><dt data-i18n="price.rVideo">Video</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd data-i18n="price.vIncl">Included</dd></div>
-        <div><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
+        <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
       </dl>
     </section>
     <section class="tier tier-top" style="--h:100" aria-labelledby="tier-4">
-      <h3 id="tier-4" class="tier-name" data-i18n="price.n4">Unlimited</h3>
-      <p class="tier-price">$29.99 <span class="tier-per" data-i18n="price.per">per event</span></p>
-      <p class="tier-note" data-i18n="price.n4note">No guest limit, and the only plan with video.</p>
+      <div class="tier-head">
+        <h3 id="tier-4" class="tier-name" data-i18n="price.n4">Unlimited</h3>
+        <p class="tier-price">$29.99 <span class="tier-per" data-i18n="price.per">per event</span></p>
+        <p class="tier-note" data-i18n="price.n4note">No guest limit, and the only plan with video.</p>
+      </div>
       <dl class="tier-rows">
         <div><dt data-i18n="price.rGuests">Guests</dt><dd data-i18n="price.vUnl">Unlimited</dd></div>
         <div><dt data-i18n="price.rPhotos">Photos</dt><dd data-i18n="price.vUnl">Unlimited</dd></div>
         <div><dt data-i18n="price.rShots">Shots per guest</dt><dd><span data-i18n="price.vShotsInf">10 to 72, or</span> <span class="mini-pill"><svg aria-hidden="true"><use href="#i-film"/></svg><svg aria-hidden="true"><use href="#i-inf"/></svg><span class="sr-only" data-i18n="demo.srInf">Unlimited shots</span></span></dd></div>
         <div><dt data-i18n="price.rVideo">Video</dt><dd data-i18n="price.vVideo">Up to 90&nbsp;s</dd></div>
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd data-i18n="price.vIncl">Included</dd></div>
-        <div><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
+        <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
       </dl>
     </section>
   </div>
@@ -497,7 +536,9 @@
     <ul class="footnotes">
       <li data-i18n="price.f1">One-time purchase per event, in the AllShots iPhone app. Prices in USD; the App Store charges in your local currency, and prices may vary by region.</li>
       <li data-i18n="price.f2">Every plan includes the live album and a ZIP download of everything.</li>
+      <li data-i18n="price.fShots">Shots per guest: 10 to 72 on every plan. On Starter, the album holds 50 photos in total.</li>
       <li data-i18n="price.f3">Need more guests later? Upgrade the same event from the app.</li>
+      <li data-host-upgrade data-i18n="price.f5">You can also upgrade an event from the <a href="https://host.allshots.app/">host dashboard</a> on the web.</li>
       <!-- OPTIONAL:pro-line --><li data-i18n="price.f4">Host often? Monthly and annual plans are in the app.</li><!-- /OPTIONAL:pro-line -->
     </ul>
     <div class="cta-row">
@@ -533,8 +574,7 @@
     </div>
     <div class="faq">
       <details><summary data-i18n="faq.q1">Do guests need to download an app?</summary><p data-i18n="faq.a1">No. They scan the QR code or type the 6-character code, and a page opens in their phone’s browser. Tapping Photo opens the phone’s own camera. Guests who have the iPhone app can use its camera instead, which is where disposable mode works in full, and everything lands in the same album.</p></details>
-      <!-- PENDING: host DNS → faq.a2 gains " …or a computer, at host.allshots.app." -->
-      <details><summary data-i18n="faq.q2">Does it work on Android?</summary><p data-i18n="faq.a2">For guests, yes: any modern phone browser works. To create and manage an event you need an iPhone with iOS 16.4 or later.</p></details>
+      <details><summary data-i18n="faq.q2">Does it work on Android?</summary><p data-i18n="faq.a2">For guests, yes: any modern phone browser works. To create and manage an event you need an iPhone with iOS 16.4 or later<span data-host>, or a computer, at <a href="https://host.allshots.app/">host.allshots.app</a></span>.</p></details>
       <details><summary data-i18n="faq.q3">What is disposable mode?</summary><p data-i18n="faq.a3">A camera with a set number of shots and no preview or retakes: every shot uploads the moment it’s taken. It’s on by default in the iPhone app. You choose 10 to 72 shots per guest, or unlimited shots on the Unlimited plan.</p></details>
       <details><summary data-i18n="faq.q4">Can guests see each other’s photos?</summary><p data-i18n="faq.a4">You choose. In a shared album, everyone who joins can browse every photo as it arrives. In a private album, guests keep shooting and only you see the whole album.</p></details>
       <details><summary data-i18n="faq.q5">Who can open the album?</summary><p data-i18n="faq.a5">It isn’t public or indexed by search engines. Anyone who joins with your QR code or code can open it, so share the code the way you’d share the invite.</p></details>
@@ -554,7 +594,7 @@
 <section class="band get" id="get" aria-labelledby="get-title">
   <picture class="get-bg">
     <source type="image/avif" srcset="assets/img/get-night-1600.avif 1600w, assets/img/get-night-2400.avif 2400w" sizes="100vw">
-    <img src="assets/img/get-night-1600.webp" srcset="assets/img/get-night-1600.webp 1600w, assets/img/get-night-2400.webp 2400w" sizes="100vw" width="2400" height="1812" loading="lazy" decoding="async" alt="">
+    <img src="assets/img/get-night-1600.webp" srcset="assets/img/get-night-1600.webp 1600w, assets/img/get-night-2400.webp 2400w" sizes="100vw" width="2400" height="2392" loading="lazy" decoding="async" alt="">
   </picture>
   <div class="shell grid get-grid">
     <div class="get-copy">
@@ -570,7 +610,7 @@
     <div class="tablecard">
       <svg class="tc-rings" width="64" height="40" viewBox="0 0 64 40" aria-hidden="true"><circle cx="26" cy="20" r="13" stroke="#E0B074" stroke-width="2" fill="none"/><circle cx="40" cy="20" r="13" stroke="#E0B074" stroke-width="2" fill="none"/><path d="M40 5l3 5h-6z" fill="#E0B074"/></svg>
       <p class="tc-title" data-i18n="final.card">Scan to get the app</p>
-      <svg class="tc-qr" width="150" height="150" viewBox="-2 -2 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code linking to AllShots on the App Store" data-i18n-attr="aria-label:aria.cardQr"><rect x="-2" y="-2" width="33" height="33" fill="#F6ECE0"/><path fill="#3A0E16" d="M0 0h7v1h-7zM10 0h3v1h-3zM15 0h6v1h-6zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM11 1h3v1h-3zM15 1h2v1h-2zM18 1h1v1h-1zM20 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM15 2h3v1h-3zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h2v1h-2zM15 3h2v1h-2zM18 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM12 4h2v1h-2zM15 4h1v1h-1zM18 4h1v1h-1zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM13 5h3v1h-3zM19 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM15 7h6v1h-6zM0 8h1v1h-1zM3 8h1v1h-1zM5 8h2v1h-2zM8 8h3v1h-3zM12 8h2v1h-2zM19 8h1v1h-1zM21 8h1v1h-1zM23 8h1v1h-1zM3 9h3v1h-3zM7 9h1v1h-1zM9 9h1v1h-1zM11 9h4v1h-4zM17 9h2v1h-2zM20 9h4v1h-4zM25 9h1v1h-1zM28 9h1v1h-1zM0 10h5v1h-5zM6 10h1v1h-1zM11 10h3v1h-3zM18 10h2v1h-2zM21 10h3v1h-3zM25 10h3v1h-3zM2 11h2v1h-2zM5 11h1v1h-1zM7 11h1v1h-1zM11 11h6v1h-6zM20 11h3v1h-3zM26 11h2v1h-2zM3 12h1v1h-1zM5 12h3v1h-3zM9 12h4v1h-4zM14 12h1v1h-1zM17 12h1v1h-1zM20 12h4v1h-4zM25 12h1v1h-1zM27 12h2v1h-2zM0 13h1v1h-1zM2 13h1v1h-1zM4 13h2v1h-2zM11 13h1v1h-1zM13 13h1v1h-1zM16 13h6v1h-6zM0 14h4v1h-4zM6 14h1v1h-1zM9 14h1v1h-1zM11 14h1v1h-1zM13 14h2v1h-2zM17 14h2v1h-2zM22 14h7v1h-7zM0 15h3v1h-3zM4 15h2v1h-2zM7 15h1v1h-1zM10 15h1v1h-1zM16 15h2v1h-2zM20 15h1v1h-1zM23 15h1v1h-1zM25 15h1v1h-1zM27 15h1v1h-1zM0 16h2v1h-2zM3 16h4v1h-4zM10 16h4v1h-4zM16 16h3v1h-3zM20 16h2v1h-2zM23 16h1v1h-1zM27 16h1v1h-1zM4 17h1v1h-1zM8 17h1v1h-1zM10 17h5v1h-5zM17 17h1v1h-1zM20 17h1v1h-1zM22 17h2v1h-2zM25 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM3 18h2v1h-2zM6 18h1v1h-1zM8 18h5v1h-5zM14 18h1v1h-1zM17 18h1v1h-1zM22 18h1v1h-1zM24 18h1v1h-1zM27 18h2v1h-2zM2 19h1v1h-1zM5 19h1v1h-1zM7 19h4v1h-4zM12 19h1v1h-1zM14 19h1v1h-1zM17 19h2v1h-2zM20 19h4v1h-4zM27 19h2v1h-2zM0 20h1v1h-1zM2 20h1v1h-1zM4 20h1v1h-1zM6 20h1v1h-1zM9 20h2v1h-2zM20 20h5v1h-5zM26 20h1v1h-1zM8 21h2v1h-2zM12 21h1v1h-1zM14 21h1v1h-1zM19 21h2v1h-2zM24 21h1v1h-1zM26 21h3v1h-3zM0 22h7v1h-7zM11 22h2v1h-2zM16 22h1v1h-1zM18 22h1v1h-1zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM27 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM14 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM20 23h1v1h-1zM24 23h3v1h-3zM28 23h1v1h-1zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM9 24h2v1h-2zM17 24h1v1h-1zM20 24h5v1h-5zM27 24h2v1h-2zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM12 25h2v1h-2zM16 25h2v1h-2zM22 25h1v1h-1zM24 25h4v1h-4zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM9 26h3v1h-3zM13 26h1v1h-1zM16 26h2v1h-2zM19 26h3v1h-3zM24 26h3v1h-3zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM11 27h1v1h-1zM16 27h2v1h-2zM19 27h3v1h-3zM27 27h1v1h-1zM0 28h7v1h-7zM8 28h1v1h-1zM10 28h2v1h-2zM14 28h1v1h-1zM16 28h3v1h-3zM20 28h1v1h-1zM24 28h2v1h-2zM27 28h1v1h-1z"/></svg>
+      <svg class="tc-qr" width="150" height="150" viewBox="-2 -2 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code linking to AllShots on the App Store" data-i18n-attr="aria-label:aria.cardQr"><rect x="-2" y="-2" width="33" height="33" fill="#F6ECE0"/><path fill="none" stroke="#3A0E16" stroke-width="1" d="M0 0.5h7m3 0h3m2 0h6m1 0h7M0 1.5h1m5 0h1m4 0h3m1 0h2m1 0h1m1 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m8 0h3m2 0h1m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m3 0h2m3 0h2m1 0h1m3 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h2m3 0h3m3 0h1m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M15 7.5h6M0 8.5h1m2 0h1m1 0h2m1 0h3m1 0h2m5 0h1m1 0h1m1 0h1M3 9.5h3m1 0h1m1 0h1m1 0h4m2 0h2m1 0h4m1 0h1m2 0h1M0 10.5h5m1 0h1m4 0h3m4 0h2m1 0h3m1 0h3M2 11.5h2m1 0h1m1 0h1m3 0h6m3 0h3m3 0h2M3 12.5h1m1 0h3m1 0h4m1 0h1m2 0h1m2 0h4m1 0h1m1 0h2M0 13.5h1m1 0h1m1 0h2m5 0h1m1 0h1m2 0h6M0 14.5h4m2 0h1m2 0h1m1 0h1m1 0h2m2 0h2m3 0h7M0 15.5h3m1 0h2m1 0h1m2 0h1m5 0h2m2 0h1m2 0h1m1 0h1m1 0h1M0 16.5h2m1 0h4m3 0h4m2 0h3m1 0h2m1 0h1m3 0h1M4 17.5h1m3 0h1m1 0h5m2 0h1m2 0h1m1 0h2m1 0h1m2 0h1M0 18.5h1m2 0h2m1 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h1m2 0h2M2 19.5h1m2 0h1m1 0h4m1 0h1m1 0h1m2 0h2m1 0h4m3 0h2M0 20.5h1m1 0h1m1 0h1m1 0h1m2 0h2m9 0h5m1 0h1M8 21.5h2m2 0h1m1 0h1m4 0h2m3 0h1m1 0h3M0 22.5h7m4 0h2m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1M0 23.5h1m5 0h1m1 0h4m2 0h1m1 0h1m1 0h1m1 0h1m3 0h3m1 0h1M0 24.5h1m1 0h3m1 0h1m2 0h2m6 0h1m2 0h5m2 0h2M0 25.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m2 0h2m4 0h1m1 0h4M0 26.5h1m1 0h3m1 0h1m2 0h3m1 0h1m2 0h2m1 0h3m2 0h3m1 0h1M0 27.5h1m5 0h1m4 0h1m4 0h2m1 0h3m5 0h1M0 28.5h7m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m3 0h2m1 0h1"/></svg>
       <p class="tc-url">apps.apple.com/<wbr>app/id6777402204</p>
     </div>
   </div>
@@ -596,7 +636,7 @@
         <li><a href="#pricing" data-i18n="footer.pricing">Pricing</a></li>
         <li><a href="/guides/" data-i18n="footer.guides">Guides</a></li>
         <li><a href="/app/" data-i18n="footer.code">Have a code?</a></li>
-        <!-- PENDING: host DNS → <li><a href="https://host.allshots.app/" data-i18n="nav.host">Host dashboard</a></li> -->
+        <li data-host><a href="https://host.allshots.app/" data-i18n="nav.host">Host dashboard</a></li>
       </ul>
     </div>
     <div class="f-col">
@@ -620,7 +660,7 @@
       <label class="lang lang-full">
         <svg class="globe" aria-hidden="true"><use href="#i-globe"/></svg>
         <select data-lang-select data-i18n-attr="aria-label:aria.lang" aria-label="Language">
-          <option value="en">English</option><option value="tr">Türkçe</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option>
+          <option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="es" lang="es">Español</option><option value="fr" lang="fr">Français</option><option value="de" lang="de">Deutsch</option>
         </select>
       </label>
       <a class="f-mail" href="mailto:allshots.app@gmail.com">allshots.app@gmail.com</a>

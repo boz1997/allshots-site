@@ -1,59 +1,65 @@
-/* AllShots home: the menu niceties, the shot-counter demo and the hand of cards. The page reads fully without it.
-   The demo takes no picture and makes no request: it only counts. */
-(function () {
-  var d = document, motion = function () { return d.documentElement.classList.contains('motion'); };
+/* AllShots home: the menu niceties, the shot-counter demo, the hand of cards and the occasions rotator.
+   The page reads fully without it. The demo takes no picture and makes no request: it only counts.
+   Each block has its own scope; strings come from hidden [data-i18n] spans (data-s), so i18n.js translates them. */
+(function (d) {
+  'use strict';
+  var root = d.documentElement, on = function (ev, fn) { d.addEventListener(ev, fn); };
+  var motion = function () { return root.classList.contains('motion'); };
+  var str = function (scope, k) { var el = scope.querySelector('[data-s="' + k + '"]'); return el ? el.textContent : ''; };
+  var each = function (list, fn) { [].forEach.call(list, fn); };
+
+  /* local review only (brief §10.2): host.allshots.app links open the dashboard's dev server */
+  function hostLinks() {
+    if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+    each(d.querySelectorAll('a[href^="https://host.allshots.app"]'), function (a) {
+      a.href = a.getAttribute('href').replace('https://host.allshots.app', 'http://localhost:5173');
+    });
+  }
 
   /* menu: <details> works without JS; this adds aria-expanded, Escape, outside click and close-on-link */
-  var menu = d.querySelector('.menu');
-  if (menu) {
-    var sum = menu.querySelector('summary');
-    var sync = function () { sum.setAttribute('aria-expanded', menu.open ? 'true' : 'false'); };
+  function menu() {
+    var m = d.querySelector('.menu'); if (!m) return;
+    var sum = m.querySelector('summary');
+    var sync = function () { sum.setAttribute('aria-expanded', m.open ? 'true' : 'false'); };
     sync();
-    menu.addEventListener('toggle', sync);
-    menu.addEventListener('click', function (e) { if (e.target.closest('a')) menu.open = false; });
-    d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.open) { menu.open = false; sum.focus(); } });
-    d.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    m.addEventListener('toggle', sync);
+    m.addEventListener('click', function (e) { if (e.target.closest('a')) m.open = false; });
+    on('keydown', function (e) { if (e.key === 'Escape' && m.open) { m.open = false; sum.focus(); } });
+    on('click', function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
   }
 
   /* the shot counter (camera.tsx): shutter → flash → count − 1 → pill bounce → one tick fills; at most one shot a second */
-  var demo = d.querySelector('[data-demo]');
-  if (demo) {
-    var q = function (s) { return demo.querySelector(s); };
+  function demo() {
+    var el = d.querySelector('[data-demo]'); if (!el) return;
+    var q = function (s) { return el.querySelector(s); };
     var num = q('[data-num]'), lbl = q('[data-lbl]'), ticks = q('[data-ticks]'), live = q('[data-live]'),
         shutter = q('[data-shutter]'), flash = q('[data-flash]'), counter = q('[data-counter]'),
         done = q('[data-done]'), infNote = q('[data-inf-note]');
-    var str = function (k) { var el = q('[data-s="' + k + '"]'); return el ? el.textContent : ''; };
     var total = 24, left = 24, inf = false, lastShot = 0;
     var say = function (t) { live.textContent = t; };
     var status = function () {
-      if (inf) return str('srInf');
-      if (left === 1) return str('last');
-      return str('srLeft').replace('{n}', left);
-    };
-    var buildTicks = function () {
-      var h = '';
-      for (var i = 0; i < total; i++) h += '<i></i>';
-      ticks.innerHTML = h;
+      if (inf) return str(el, 'srInf');
+      if (left === 1) return str(el, 'last');
+      return str(el, 'srLeft').replace('{n}', left);
     };
     var render = function () {
-      var isLast = !inf && left === 1;
-      demo.classList.toggle('is-inf', inf);
-      demo.classList.toggle('is-last', isLast);
+      var isLast = !inf && left === 1, out = !inf && left === 0, ts = ticks.children;
+      el.classList.toggle('is-inf', inf);
+      el.classList.toggle('is-last', isLast);
       num.textContent = left;
-      lbl.textContent = isLast ? str('last') : str('left');
+      lbl.textContent = isLast ? str(el, 'last') : str(el, 'left');
       ticks.hidden = inf; infNote.hidden = !inf;
-      var ts = ticks.children;
       for (var i = 0; i < ts.length; i++) ts[i].classList.toggle('used', i < total - left);
-      var out = !inf && left === 0;
       shutter.disabled = out;
       done.hidden = !out;
     };
     var set = function (n) {
       inf = n === 0; total = inf ? 0 : n; left = total;
-      [].forEach.call(demo.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', +c.getAttribute('data-n') === n ? 'true' : 'false'); });
-      buildTicks(); render(); say(status());
+      each(el.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', +c.getAttribute('data-n') === n ? 'true' : 'false'); });
+      ticks.innerHTML = new Array(total + 1).join('<i></i>');
+      render(); say(status());
     };
-    var play = function (el, frames, ms) { if (motion() && el.animate) el.animate(frames, { duration: ms, easing: 'ease-out' }); };
+    var play = function (node, frames, ms) { if (motion() && node.animate) node.animate(frames, { duration: ms, easing: 'ease-out' }); };
     shutter.addEventListener('click', function () {
       var now = Date.now();
       if (now - lastShot < 1000 || (!inf && left <= 0)) return;
@@ -66,20 +72,19 @@
       if (!inf && left === 0) { say(q('.done-t').textContent + '. ' + q('.done-b').textContent); q('[data-reset]').focus(); }
       else say(status());
     });
-    demo.addEventListener('click', function (e) {
+    el.addEventListener('click', function (e) {
       var c = e.target.closest('.chip');
       if (c) set(+c.getAttribute('data-n'));
       if (e.target.closest('[data-reset]')) { left = total; render(); say(status()); shutter.focus(); }
     });
-    /* i18n.js rewrites the pill label on a language change; put the current state back */
-    d.addEventListener('i18n:applied', function () { render(); });
+    on('i18n:applied', render);   /* i18n.js rewrites the pill label; put the current state back */
     render();
   }
 
   /* hand of cards: prev/next brings a design to the front. Without JS the fan is static. */
-  var fan = d.querySelector('[data-fan]'), ctl = d.querySelector('[data-fan-controls]');
-  if (fan && ctl) {
-    var cards = [].slice.call(fan.querySelectorAll('.fan-card')), n = cards.length, front = 0;
+  function fan() {
+    var f = d.querySelector('[data-fan]'), ctl = d.querySelector('[data-fan-controls]'); if (!f || !ctl) return;
+    var cards = [].slice.call(f.querySelectorAll('.fan-card')), n = cards.length, front = 0;
     var nameEl = ctl.querySelector('[data-fan-name]'), idxEl = ctl.querySelector('[data-fan-index]');
     var show = function () {
       cards.forEach(function (c, i) {
@@ -94,60 +99,55 @@
     ctl.querySelector('[data-fan-prev]').addEventListener('click', function () { front = (front + n - 1) % n; show(); });
     show();
   }
-  /* occasions: the headline word and the photo rotate through the seven occasions (Berk 23 Sep).
-     Pauses on hover/focus and with the button; no auto-rotation under reduced motion (the list still switches it).
-     Frames live here, per language, because the word sits inside a sentence; the list below is the accessible version. */
-  var occ = d.querySelector('[data-occ-root]');
-  if (occ) {
-    var OCC = {
-      en: ['Made for ', '.', 'Ready for every milestone.', ['weddings', 'birthdays', 'graduations', 'proms', 'homecoming', 'baby showers', 'parties']],
-      tr: ['', ' için yapıldı.', 'Her özel güne hazır.', ['Düğünler', 'Doğum günleri', 'Mezuniyet partileri', 'Mezuniyet baloları', 'Homecoming partileri', 'Baby shower partileri', 'Partiler']],
-      de: ['Für ', ' gemacht.', 'Bereit für jeden großen Anlass.', ['Hochzeiten', 'Geburtstage', 'Abschlussfeiern', 'Abschlussbälle', 'Homecoming', 'Babypartys', 'Partys']],
-      es: ['Hecho para ', '.', 'Listo para cada gran momento.', ['bodas', 'cumpleaños', 'graduaciones', 'bailes de graduación', 'homecoming', 'baby showers', 'fiestas']],
-      fr: ['Pensé pour les ', '.', 'Prêt pour chaque grand moment.', ['mariages', 'anniversaires', 'remises de diplômes', 'bals de promo', 'fêtes de homecoming', 'baby showers', 'fêtes']]
+
+  /* occasions (Berk 23 Sep): the headline, the photo and its caption rotate through the seven occasions.
+     All seven headlines are built once and stacked in one grid cell (only one visible), so the heading is always as tall
+     as its tallest version and nothing on the page moves. Pauses on hover/focus and with the button; no auto-rotation
+     under reduced motion (the list still switches it). Photos load just before they are shown. The list is the accessible version. */
+  function occasions() {
+    var occ = d.querySelector('[data-occ-root]'); if (!occ) return;
+    var q = function (s) { return occ.querySelector(s); }, all = function (s) { return [].slice.call(occ.querySelectorAll(s)); };
+    var live = q('.occ-live'), pause = q('[data-occ-pause]'), plabel = q('[data-occ-pause-label]');
+    var links = all('.occ-list a'), photos = all('.occ-photo'), caps = all('.occ-cap'), n = links.length, states = [];
+    var i = 0, held = false, stopped = false, inView = false;
+    var el = function (tag, cls, text) { var e = d.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+    var build = function () {
+      var f = str(occ, 'frame').split('{w}'), l2 = str(occ, 'line2');
+      live.textContent = ''; states = [];
+      for (var k = 0; k < n; k++) {
+        var st = el('span', 'occ-state'), l1 = el('span', 'occ-l1');
+        l1.appendChild(d.createTextNode(f[0])); l1.appendChild(el('span', 'occ-word', str(occ, 'w' + k))); l1.appendChild(d.createTextNode(f[1] || ''));
+        st.appendChild(l1); st.appendChild(el('span', 'occ-line2', l2));
+        live.appendChild(st); states.push(st);
+      }
     };
-    var live = occ.querySelector('.occ-live'), stat = occ.querySelector('.occ-static');
-    var word = occ.querySelector('[data-occ-word]'), before = occ.querySelector('[data-occ-before]');
-    var after = occ.querySelector('[data-occ-after]'), line2 = occ.querySelector('[data-occ-line2]');
-    var links = [].slice.call(occ.querySelectorAll('.occ-list a')), photos = [].slice.call(occ.querySelectorAll('.occ-photo'));
-    var pause = occ.querySelector('[data-occ-pause]'), i = 0, timer = null, held = false, stopped = false, inView = false;
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var frame = function () { return OCC[d.documentElement.lang] || OCC.en; };
-    var paint = function () {
-      var f = frame();
-      before.textContent = f[0]; after.textContent = f[1]; line2.textContent = f[2];
-      word.textContent = f[3][i]; word.href = links[i].getAttribute('href');
+    var show = function () {
+      states.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
       links.forEach(function (a, k) { if (k === i) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
-      photos.forEach(function (p, k) { p.classList.toggle('is-on', k === i); p.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
-    };
-    var go = function (k) {
-      if (k === i) return;
-      if (!motion()) { i = k; paint(); return; }
-      word.classList.add('is-out');
-      setTimeout(function () { i = k; paint(); word.classList.remove('is-out'); }, 260);
-    };
-    var tick = function () { if (!held && !stopped && inView) go((i + 1) % links.length); };
-    live.hidden = false; stat.classList.add('sr-only'); paint();
-    if (!reduce) {
-      pause.hidden = false;
-      timer = setInterval(tick, 2600);
-      pause.addEventListener('click', function () {
-        stopped = !stopped;
-        pause.setAttribute('aria-pressed', stopped ? 'true' : 'false');
-        occ.querySelector('[data-occ-pause-label]').textContent = stopped ? 'Play' : 'Pause';
+      photos.forEach(function (p, k) {
+        if (k === i || k === (i + 1) % n) p.classList.add('seen');
+        p.classList.toggle('is-on', k === i); p.setAttribute('aria-hidden', k === i ? 'false' : 'true');
       });
+      caps.forEach(function (c, k) { c.classList.toggle('is-on', k === i); });
+    };
+    var go = function (k) { if (k !== i) { i = k; show(); } };
+    var label = function () { plabel.textContent = str(occ, stopped ? 'play' : 'pause'); };
+    build(); live.hidden = false; q('.occ-static').classList.add('sr-only'); show();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(function () { if (!held && !stopped && inView) go((i + 1) % n); }, 2600);
       if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { inView = e[0].isIntersecting; }, { threshold: .35 }).observe(occ);
       else inView = true;
+      label(); pause.hidden = false;
+      pause.addEventListener('click', function () { stopped = !stopped; pause.setAttribute('aria-pressed', stopped ? 'true' : 'false'); label(); });
     }
     occ.addEventListener('mouseenter', function () { held = true; });
     occ.addEventListener('mouseleave', function () { held = false; });
     occ.addEventListener('focusin', function () { held = true; });
     occ.addEventListener('focusout', function () { held = false; });
-    links.forEach(function (a, k) {
-      a.addEventListener('mouseenter', function () { go(k); });
-      a.addEventListener('focus', function () { go(k); });
-    });
-    d.addEventListener('i18n:applied', paint);
+    links.forEach(function (a, k) { a.addEventListener('mouseenter', function () { go(k); }); a.addEventListener('focus', function () { go(k); }); });
+    on('i18n:applied', function () { build(); show(); label(); });
   }
 
-})();
+  hostLinks(); menu(); demo(); fan(); occasions();
+  on('i18n:applied', hostLinks);
+})(document);
