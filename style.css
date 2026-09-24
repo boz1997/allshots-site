@@ -89,6 +89,11 @@ a:hover { color: var(--amber-hover); }
 .btn-soft { background: var(--paper-deep); color: var(--ink); }
 .btn-soft:hover { background: var(--line); color: var(--ink); }
 .btn-sm { min-height: 44px; padding: 0 20px; }
+/* the plans' web buttons (home tiers, pricing.html): they may wrap in long languages; outline in ox-text on oxblood */
+.tier-web, .plan-web { white-space: normal; text-align: center; padding-block: 10px; }
+.plan .btn + .btn { margin-top: 8px; }
+:is(.tier-top, .plans .plan:last-child) .btn-secondary { color: var(--ox-text); box-shadow: inset 0 0 0 1.5px var(--ox-text); }
+:is(.tier-top, .plans .plan:last-child) .btn-secondary:hover { background: rgba(246, 236, 224, .1); color: var(--ox-text); }
 #appStoreBtn { color: var(--ink); }  /* e.html: its inline style makes this one transparent */
 
 /* ---------- header (every page) ---------- */
@@ -226,12 +231,12 @@ html body .card .muted[style*="font-size"], html body #openAppLink { font-size: 
 }
 
 /* ---------- HOST SWITCH (brief §10, Berk 23 Sep: host dashboard links ON) ----------
-   Home: nav + menu "Host dashboard", hero "Create your first event", the end of faq.a2, footer "Host dashboard" carry
-   [data-host]; the pricing line price.f5 ("upgrade … on the web") carries [data-host-upgrade]. The guides' and use cases'
-   host buttons are matched by their href. If host.allshots.app is not live, uncomment the first rule (the hero then shows
-   "Take a test shot"); if web upgrades are not live, uncomment the second. */
+   Home: nav, menu and footer "Host dashboard", "Create your event" (header, hero, #get), Starter's web button (also on
+   pricing.html) and the end of faq.a2 carry [data-host]; price.f5 and the paid plans' "Buy on the web" (home + pricing.html)
+   carry [data-host-upgrade]. The guides' and use cases' host buttons are matched by their href. If host.allshots.app is not
+   live, uncomment the first rule (the hero then shows "Take a test shot"); if web upgrades are not live, the second. */
 a.host-alt { display: none; }
 /* [data-host], .btn[href^="https://host.allshots.app"] { display: none !important; } a.host-alt { display: inline-flex !important; } */
-/* Second switch ON (24 Sep): the live dashboard's Upgrade still says "coming soon" and pricing.html agrees (02 rule 4).
-   Comment it out only once the dashboard's Upgrade opens checkout. */
+/* Second switch ON (24 Sep): web checkout is not live (GO-LIVE D6/D7). Comment it out at go-live: that one line shows
+   price.f5 and the three "Buy on the web" buttons. */
 [data-host-upgrade] { display: none !important; }

@@ -3,9 +3,9 @@
   AllShots home, "Flash" (research/04-brief.md; notes: build/NOTES.md). Every visible string has a data-i18n key;
   i18n.js holds EN (= this file), assets/i18n/<lang>.js the rest. Markers: REPLACE with device capture, PENDING: upgrade
   SKUs, OPTIONAL:pro-line (on). No real event code on this page.
-  HOST LINKS (brief §10: ON) carry data-host: nav + menu "Host dashboard", hero "Create your first event", the end of
-  faq.a2, footer "Host dashboard"; price.f5 carries data-host-upgrade (hidden until web upgrades are live). Switches: HOST SWITCH, end of style.css.
-  On localhost, assets/site.js points them at http://localhost:5173.
+  HOST LINKS (brief §10: ON) carry data-host: nav/menu/footer "Host dashboard", "Create your event" (header, hero, #get),
+  Starter's web button, the end of faq.a2; price.f5 and the paid plans' web buttons carry data-host-upgrade (hidden until
+  web checkout is live). Switches: HOST SWITCH, end of style.css. site.js adds ?lang= (and the localhost rewrite).
 -->
 <html lang="en">
 <head>
@@ -81,6 +81,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
       <option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="es" lang="es">Español</option><option value="fr" lang="fr">Français</option><option value="de" lang="de">Deutsch</option>
     </select>
   </label>
+  <a class="btn btn-sm btn-secondary head-create" href="https://host.allshots.app/#/" data-host data-i18n="nav.create">Create your event</a>
   <a class="btn btn-sm head-cta" href="https://apps.apple.com/app/id6777402204" data-i18n="nav.getApp">Get the app</a>
   <details class="menu">
     <summary><span class="menu-lines" aria-hidden="true"></span><span class="sr-only" data-i18n="nav.menu">Menu</span></summary>
@@ -116,7 +117,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
       <p class="lead only-narrow" data-i18n="hero.leadShort">Guests scan one QR code and start shooting. Every shot lands in one live album.</p>
       <div class="cta-row">
         <a class="btn" href="https://apps.apple.com/app/id6777402204" data-i18n="hero.cta">Get the app</a>
-        <a class="text-link arrow" href="https://host.allshots.app/#/" data-host data-i18n="hero.host">Create your first event</a>
+        <a class="btn btn-secondary" href="https://host.allshots.app/#/" data-host data-i18n="nav.create">Create your event</a>
         <a class="text-link arrow host-alt" href="#demo" data-i18n="hero.try">Take a test shot</a>
       </div>
       <p class="note" data-i18n="hero.note">Free for up to 10 guests. One-time price per event when you need more. No subscription needed.</p>
@@ -487,6 +488,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
         <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.v7">7 days after the first upload</dd></div>
       </dl>
+      <a class="btn btn-sm btn-secondary tier-web" href="https://host.allshots.app/#/" aria-describedby="tier-1" data-host data-i18n="price.webFree">Create free on the web</a>
     </section>
     <section class="tier" style="--h:82" aria-labelledby="tier-2">
       <div class="tier-head">
@@ -501,6 +503,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd><span aria-hidden="true">—</span><span class="sr-only" data-i18n="aria.no">Not included</span></dd></div>
         <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
       </dl>
+      <a class="btn btn-sm btn-secondary tier-web" href="https://host.allshots.app/#/?plan=small" aria-describedby="tier-2" data-host-upgrade data-i18n="price.webBuy">Buy on the web</a>
     </section>
     <section class="tier" style="--h:90" aria-labelledby="tier-3">
       <div class="tier-head">
@@ -515,6 +518,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd data-i18n="price.vIncl">Included</dd></div>
         <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
       </dl>
+      <a class="btn btn-sm btn-secondary tier-web" href="https://host.allshots.app/#/?plan=medium" aria-describedby="tier-3" data-host-upgrade data-i18n="price.webBuy">Buy on the web</a>
     </section>
     <section class="tier tier-top" style="--h:100" aria-labelledby="tier-4">
       <div class="tier-head">
@@ -530,6 +534,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
         <div><dt data-i18n="price.rWords">Notes and voices</dt><dd data-i18n="price.vIncl">Included</dd></div>
         <div class="row-keep"><dt data-i18n="price.rKeep">Storage</dt><dd data-i18n="price.vKeep">No automatic deletion</dd></div>
       </dl>
+      <a class="btn btn-sm btn-secondary tier-web" href="https://host.allshots.app/#/?plan=unlimited" aria-describedby="tier-4" data-host-upgrade data-i18n="price.webBuy">Buy on the web</a>
     </section>
   </div>
   <div class="shell pricing-foot">
@@ -602,6 +607,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
       <p class="lead" data-i18n="final.sub">Create your event in the iPhone app. It’s free for up to 10 guests.</p>
       <div class="cta-row">
         <a class="btn btn-night" href="https://apps.apple.com/app/id6777402204" data-i18n="final.cta">Get the app</a>
+        <a class="btn btn-line" href="https://host.allshots.app/#/" data-host data-i18n="nav.create">Create your event</a>
         <a class="text-link arrow" href="/app/" data-i18n="final.code">Have a code? Open the camera</a>
       </div>
       <!-- PENDING: demo event (brief §8.2) → a "Try it as a guest" link to the demo event (brief §8.2 has the URL) -->

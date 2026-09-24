@@ -8,11 +8,24 @@
   var str = function (scope, k) { var el = scope.querySelector('[data-s="' + k + '"]'); return el ? el.textContent : ''; };
   var each = function (list, fn) { [].forEach.call(list, fn); };
 
-  /* local review only (brief §10.2): host.allshots.app links open the dashboard's dev server */
+  /* host links carry the language in the hash query (#/?plan=medium&lang=tr), as the dashboard reads it; without i18n.js
+     (pricing.html) it is picked as i18n.js picks it. Local review: the dashboard's local stack (web-host `npm run local`) */
+  var LANGS = ['en', 'tr', 'es', 'fr', 'de'], ok = function (l) { return LANGS.indexOf(l) >= 0; };
+  function siteLang() {
+    if (window.ALLSHOTS_I18N) return ok(root.lang) ? root.lang : 'en';
+    var l = new URLSearchParams(location.search).get('lang');
+    if (!ok(l)) try { l = localStorage.getItem('gc_lang'); } catch (e) { l = null; }
+    if (!ok(l)) l = (navigator.language || '').slice(0, 2).toLowerCase();
+    return ok(l) ? l : 'en';
+  }
   function hostLinks() {
-    if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
-    each(d.querySelectorAll('a[href^="https://host.allshots.app"]'), function (a) {
-      a.href = a.getAttribute('href').replace('https://host.allshots.app', 'http://localhost:5173');
+    var lang = siteLang(), home = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://127.0.0.1:5191' : 'https://host.allshots.app';
+    each(d.querySelectorAll('a[href^="https://host.allshots.app"], a[data-host-href]'), function (a) {
+      var base = a.getAttribute('data-host-href') || a.getAttribute('href'), h = (base.split('#')[1] || '/').split('?'),
+          q = new URLSearchParams(h[1] || '');
+      q.set('lang', lang);
+      a.setAttribute('data-host-href', base);
+      a.href = home + '/#' + h[0] + '?' + q;
     });
   }
 
