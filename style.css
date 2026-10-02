@@ -237,6 +237,6 @@ html body .card .muted[style*="font-size"], html body #openAppLink { font-size: 
    live, uncomment the first rule (the hero then shows "Take a test shot"); if web upgrades are not live, the second. */
 a.host-alt { display: none; }
 /* [data-host], .btn[href^="https://host.allshots.app"] { display: none !important; } a.host-alt { display: inline-flex !important; } */
-/* Second switch ON (24 Sep): web checkout is not live (GO-LIVE D6/D7). Comment it out at go-live: that one line shows
-   price.f5 and the three "Buy on the web" buttons. */
-[data-host-upgrade] { display: none !important; }
+/* Second switch OFF (2 Oct 2026): web checkout is live. Uncomment the line below to hide price.f5 and the three
+   "Buy on the web" buttons again. */
+/* [data-host-upgrade] { display: none !important; } */

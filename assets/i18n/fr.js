@@ -167,7 +167,7 @@
 "price.f2": "Chaque forfait inclut l’album en direct et le téléchargement de tout le contenu en ZIP.",
 "price.fShots": "Photos par invité : de 10 à 72 avec chaque forfait. Avec Découverte, l’album contient 50 photos au total.",
 "price.f3": "Besoin de plus d’invités plus tard ? Passez le même événement à un forfait supérieur depuis l’app.",
-"price.f5": "Vous pouvez aussi passer un événement à un forfait supérieur depuis le <a href=\"https://host.allshots.app/\">tableau de bord</a> sur le web.",
+"price.f5": "Vous pouvez aussi acheter un forfait en ligne, depuis le <a href=\"https://host.allshots.app/\">tableau de bord</a>. Un événement payant passe à un forfait supérieur dans l’app.",
 "price.f4": "Vous organisez souvent ? Les offres mensuelles et annuelles sont dans l’app.",
 "price.cta": "Télécharger l’app",
 "price.compare": "Comparer les forfaits",

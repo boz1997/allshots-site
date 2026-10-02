@@ -167,7 +167,7 @@
 "price.f2": "Todos los planes incluyen el álbum en vivo y la descarga de todo en un ZIP.",
 "price.fShots": "Fotos por invitado: de 10 a 72 en todos los planes. En Inicial, el álbum admite 50 fotos en total.",
 "price.f3": "¿Necesitas más invitados después? Mejora el mismo evento desde la app.",
-"price.f5": "También puedes mejorar un evento desde el <a href=\"https://host.allshots.app/\">panel del anfitrión</a> en la web.",
+"price.f5": "También puedes comprar un plan en la web, desde el <a href=\"https://host.allshots.app/\">panel del anfitrión</a>. Un evento de pago pasa a un plan mayor desde la app.",
 "price.f4": "¿Organizas eventos a menudo? En la app hay planes mensuales y anuales.",
 "price.cta": "Descarga la app",
 "price.compare": "Compara los planes",

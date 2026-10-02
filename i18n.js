@@ -173,7 +173,7 @@
 "price.f2": "Every plan includes the live album and a ZIP download of everything.",
 "price.fShots": "Shots per guest: 10 to 72 on every plan. On Starter, the album holds 50 photos in total.",
 "price.f3": "Need more guests later? Upgrade the same event from the app.",
-"price.f5": "You can also upgrade an event from the <a href=\"https://host.allshots.app/\">host dashboard</a> on the web.",
+"price.f5": "You can also buy a plan on the web, in the <a href=\"https://host.allshots.app/\">host dashboard</a>. A paid event moves to a bigger plan in the app.",
 "price.f4": "Host often? Monthly and annual plans are in the app.",
 "price.cta": "Get the app",
 "price.compare": "Compare plans",

@@ -4,8 +4,8 @@
   i18n.js holds EN (= this file), assets/i18n/<lang>.js the rest. Markers: REPLACE with device capture, PENDING: upgrade
   SKUs, OPTIONAL:pro-line (on). No real event code on this page.
   HOST LINKS (brief §10: ON) carry data-host: nav/menu/footer "Host dashboard", "Create your event" (header, hero, #get),
-  Starter's web button, the end of faq.a2; price.f5 and the paid plans' web buttons carry data-host-upgrade (hidden until
-  web checkout is live). Switches: HOST SWITCH, end of style.css. site.js adds ?lang= (and the localhost rewrite).
+  Starter's web button, the end of faq.a2; price.f5 and the paid plans' web buttons carry data-host-upgrade (shown since web
+  checkout went live, 2 Oct 2026). Switches: HOST SWITCH, end of style.css. site.js adds ?lang= (and the localhost rewrite).
 -->
 <html lang="en">
 <head>
@@ -543,7 +543,7 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
       <li data-i18n="price.f2">Every plan includes the live album and a ZIP download of everything.</li>
       <li data-i18n="price.fShots">Shots per guest: 10 to 72 on every plan. On Starter, the album holds 50 photos in total.</li>
       <li data-i18n="price.f3">Need more guests later? Upgrade the same event from the app.</li>
-      <li data-host-upgrade data-i18n="price.f5">You can also upgrade an event from the <a href="https://host.allshots.app/">host dashboard</a> on the web.</li>
+      <li data-host-upgrade data-i18n="price.f5">You can also buy a plan on the web, in the <a href="https://host.allshots.app/">host dashboard</a>. A paid event moves to a bigger plan in the app.</li>
       <!-- OPTIONAL:pro-line --><li data-i18n="price.f4">Host often? Monthly and annual plans are in the app.</li><!-- /OPTIONAL:pro-line -->
     </ul>
     <div class="cta-row">

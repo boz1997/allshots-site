@@ -167,7 +167,7 @@
 "price.f2": "Her plana canlı albüm ve tüm içeriğin ZIP olarak indirilmesi dahil.",
 "price.fShots": "Misafir başına çekim: her planda 10–72. Başlangıç planında albüm toplam 50 fotoğraf alır.",
 "price.f3": "Sonradan daha fazla misafir mi gerekti? Aynı etkinliği uygulamadan yükselt.",
-"price.f5": "Bir etkinliği web’deki <a href=\"https://host.allshots.app/\">Host panelinden</a> de yükseltebilirsin.",
+"price.f5": "Paketi web’de, <a href=\"https://host.allshots.app/\">Host panelinden</a> de satın alabilirsin. Ücretli bir etkinliği daha büyük bir pakete uygulamadan geçirirsin.",
 "price.f4": "Sık sık etkinlik mi düzenliyorsun? Aylık ve yıllık planlar uygulamada.",
 "price.cta": "Uygulamayı al",
 "price.compare": "Planları karşılaştır",
