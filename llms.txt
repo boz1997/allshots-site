@@ -32,6 +32,7 @@ Every plan includes the live shared gallery, QR & code, disposable mode and a fu
 - In the app: buy in the AllShots iPhone app and pay with your Apple ID. Apple is the seller; billing and refunds go through the App Store.
 - On the web: pay by card from the host dashboard at https://host.allshots.app/. Create your event there, or pick a free one, and choose a plan. Web purchases are sold by Paddle, reseller and merchant of record, and appear in the app on the same event within minutes. Same prices, same plans; Paddle may show your local currency and tax at checkout.
 - Need a bigger plan later? You can move the same event to a bigger plan in the iPhone app at any time; nothing your guests have added is lost. The bigger plan is charged at its full price, so pick the plan that fits your guest list from the start.
+- Host often? Monthly and annual plans are in the app.
 
 ## Main pages
 
