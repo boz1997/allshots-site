@@ -15,8 +15,8 @@
 /* the language, picked as i18n.js picks it: a non-English visitor's dictionary starts loading now and the page waits for it (≤ 1.5 s), so there is no English flash */
 var S=['en','tr','es','fr','de'],l=null,ok=function(v){return S.indexOf(v)>=0};try{l=new URLSearchParams(location.search).get('lang')}catch(e){}if(!ok(l)){try{l=localStorage.getItem('gc_lang')}catch(e){l=null}}if(!ok(l))l=(navigator.language||'en').slice(0,2).toLowerCase();
 if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script');s.src='/assets/i18n/'+l+'.js';s.async=true;s.setAttribute('data-lang-file',l);s.onerror=function(){h.classList.remove('i18n-wait')};d.head.appendChild(s);setTimeout(function(){h.classList.remove('i18n-wait')},1500)}})(document.documentElement,document);</script>
-<title>AllShots — Every guest is a photographer</title>
-<meta name="description" content="Share one QR code and every guest shoots into one live album, from the app or the phone’s browser. Free for up to 10 guests, one-time price per event.">
+<title>AllShots: QR Code Photo Sharing for Weddings &amp; Events</title>
+<meta name="description" content="Share one QR code and every guest shoots into one live album, with no app or account needed. Free for up to 10 guests, one-time price per event.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#EFE7D6">
 <meta name="apple-itunes-app" content="app-id=6777402204">
@@ -25,13 +25,14 @@ if(ok(l)&&l!=='en'){h.classList.add('i18n-wait');var s=d.createElement('script')
 <meta property="og:site_name" content="AllShots">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://allshots.app/">
-<meta property="og:title" content="AllShots — Every guest is a photographer">
-<meta property="og:description" content="Share one QR code and every guest shoots into one live album, from the app or the phone’s browser. Free for up to 10 guests, one-time price per event.">
+<meta property="og:title" content="AllShots: QR Code Photo Sharing for Weddings &amp; Events">
+<meta property="og:description" content="Share one QR code and every guest shoots into one live album, with no app or account needed. Free for up to 10 guests, one-time price per event.">
 <meta property="og:image" content="https://allshots.app/assets/brand/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AllShots: every guest is a photographer">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AllShots: QR Code Photo Sharing for Weddings &amp; Events">
 <meta name="twitter:image" content="https://allshots.app/assets/brand/og.jpg">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">

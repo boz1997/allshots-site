@@ -1,0 +1,72 @@
+# AllShots
+
+> AllShots is event photo sharing made for weddings and ready for every milestone: birthdays, graduations, proms, homecoming, baby showers and parties. The host shares one QR code; guests scan it and start shooting, with no app or account needed, and every photo and video lands in one live album the host controls. Every event starts free for up to 10 guests. When the guest list grows, the host buys a one-time package for that event; no subscription needed.
+
+## How it works for hosts
+
+- Create your event in the AllShots iPhone app (iOS 16.4 or later) or on a computer in the host dashboard at https://host.allshots.app/. Name it, add the date and choose how many shots each guest gets. You don’t need an account to start.
+- Your QR code is ready in the app. Pick one of 12 invitation and table-card designs with your QR code built in: save it to Photos to print, or share it with the invite.
+- Choose a shared album, where everyone who joins can browse every photo, or a private album, where guests keep shooting and only you see the whole album.
+- Every photo lands in one live album as it’s taken. Delete any photo from the album; anything a guest reports is hidden at once while it’s reviewed. End the event when the night is over, and uploads stop.
+- Download every photo and video as one ZIP, on every plan, free included.
+
+## How it works for guests
+
+- Scan the QR code, or type the 6-character code at https://allshots.app/app/. A page opens in the phone’s browser, on iPhone or Android; tap Photo and the phone’s own camera opens. There’s nothing to install.
+- No account, no password: guests can add a name or stay anonymous.
+- Any modern phone browser works. Guests with the iPhone app can use it instead, and everything lands in the same album.
+- Disposable mode: no preview and no retakes, every shot uploads the moment it’s taken, and each guest gets a set number of shots (10, 12, 24, 36, 48 or 72, or unlimited shots on the Unlimited plan). The no-preview camera is in the iPhone app; guests in a browser use their phone’s own camera, with the same shot count.
+- On Medium and Unlimited, guests can also leave a written note or a voice message from the browser.
+
+## Pricing
+
+Pay once, per event. Start free; all plans are one-time purchases for a single event, and nothing renews. Prices are in US dollars and may vary by region; local taxes may apply at checkout.
+
+- Starter: Free. Up to 10 guests, 50 photos, live shared gallery, QR & 6-character code, photos kept 7 days after the first upload.
+- Small: $3.99 / event. Up to 20 guests, unlimited photos, no automatic deletion, everything in Starter.
+- Medium: $14.99 / event. Up to 50 guests, unlimited photos, memory book (written notes from guests), voice memories (spoken messages), everything in Small.
+- Unlimited: $29.99 / event. Unlimited guests, video capture (videos up to 90 s), everything in Medium.
+
+Every plan includes the live shared gallery, QR & code, disposable mode and a full album download (ZIP).
+
+- In the app: buy in the AllShots iPhone app and pay with your Apple ID. Apple is the seller; billing and refunds go through the App Store.
+- On the web: pay by card from the host dashboard at https://host.allshots.app/. Create your event there, or pick a free one, and choose a plan. Web purchases are sold by Paddle, reseller and merchant of record, and appear in the app on the same event within minutes. Same prices, same plans; Paddle may show your local currency and tax at checkout.
+- Need a bigger plan later? You can move the same event to a bigger plan in the iPhone app at any time; nothing your guests have added is lost. The bigger plan is charged at its full price, so pick the plan that fits your guest list from the start.
+
+## Main pages
+
+- [Home](https://allshots.app/): how AllShots works, features, pricing and FAQ
+- [Pricing](https://allshots.app/pricing.html): the four plans compared, and how to buy in the app or on the web
+- [Host guide](https://allshots.app/host-guide.html): ready-made wording for telling your guests that photos are being collected
+- [Guides](https://allshots.app/guides/): all guides and use cases
+- [AllShots on the App Store](https://apps.apple.com/app/id6777402204): the iPhone app
+- [Host dashboard](https://host.allshots.app/): create your event and buy a plan on the web
+- [Have a code?](https://allshots.app/app/): the guest camera in the phone’s browser
+
+## Guides
+
+- [The best way to share wedding photos with guests (2026 guide)](https://allshots.app/guides/wedding-photo-sharing-app.html): What a wedding photo sharing app has to get right, and how AllShots does it.
+- [QR code for wedding photos: how to set one up (free)](https://allshots.app/guides/qr-code-wedding-photos.html): Make the code, print it, word the sign — the whole thing in five minutes.
+- [Disposable camera app for weddings: the same magic, no film](https://allshots.app/guides/disposable-camera-app-for-weddings.html): Fixed shots per guest, no preview, no delete — the disposable idea without the film.
+- [Let guests upload photos without an app: how it works](https://allshots.app/guides/guest-photo-upload-no-app.html): Why "no app" matters and what happens on iPhone, Android and desktop when a guest scans.
+- [25 wedding guest photo ideas (that guests will actually take)](https://allshots.app/guides/wedding-guest-photo-ideas.html): Prompts, table games and disposable-mode challenges for the photos a photographer cannot take.
+- [How to collect photos from wedding guests (every method, compared)](https://allshots.app/guides/how-to-collect-photos-from-wedding-guests.html): Group chat vs. shared drive vs. hashtag vs. disposables vs. QR album — what each really gets you.
+- [The wedding hashtag alternative: a private album instead of a public feed](https://allshots.app/guides/wedding-hashtag-alternative.html): Why hashtags miss most of the photos, and the private-album alternative that catches them all.
+
+## Use cases
+
+- [Birthday party photo sharing: one album for every guest’s photos](https://allshots.app/use-cases/birthday-party-photo-sharing.html): Kids’ parties, milestone birthdays and surprise parties: one QR, one album, no chasing.
+- [Corporate event photo sharing: collect photos from attendees with a QR code](https://allshots.app/use-cases/corporate-event-photo-sharing.html): Offsites, holiday parties and conferences: attendee photos in one controlled album, no app on work phones.
+- [Baby shower photo app: one album, every guest’s photos, plus their messages](https://allshots.app/use-cases/baby-shower-photo-app.html): Photos from every guest and a memory book of notes and voice messages, from one QR code.
+- [Graduation party photo sharing: every guest’s photos in one album](https://allshots.app/use-cases/graduation-party-photo-sharing.html): Open houses and backyard parties: one QR at the door, every guest’s photos in one album.
+- [Prom photo sharing: one album for the whole night](https://allshots.app/use-cases/prom-photo-sharing.html): Pre-prom photos, the dance and the after-party in one album, with the committee in control.
+- [Homecoming photo sharing: the game, the dance and the reunion in one album](https://allshots.app/use-cases/homecoming-photo-sharing.html): One code for the whole weekend: parade, game, dance and the alumni tailgate.
+- [Party photo sharing app: every guest’s photos in one live album](https://allshots.app/use-cases/party-photo-sharing-app.html): Dinner parties, engagements, retirements, reunions: one QR, one live album.
+
+## Optional
+
+- [Support](https://allshots.app/support.html): email allshots.app@gmail.com; answers on joining an event, reporting content and deleting your account and data
+- [Refund policy](https://allshots.app/refund-policy.html): how refunds work for plans bought on the web (via Paddle) and in the App Store (via Apple)
+- [Privacy policy](https://allshots.app/privacy.html)
+- [Terms of service](https://allshots.app/terms.html)
+- [Imprint](https://allshots.app/imprint.html)

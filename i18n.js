@@ -6,8 +6,8 @@
 (function () {
   var I18N = window.ALLSHOTS_I18N = window.ALLSHOTS_I18N || {};
   I18N.en = {
-"meta.title": "AllShots — Every guest is a photographer",
-"meta.desc": "Share one QR code and every guest shoots into one live album, from the app or the phone’s browser. Free for up to 10 guests, one-time price per event.",
+"meta.title": "AllShots: QR Code Photo Sharing for Weddings & Events",
+"meta.desc": "Share one QR code and every guest shoots into one live album, with no app or account needed. Free for up to 10 guests, one-time price per event.",
 "nav.skip": "Skip to content",
 "aria.nav": "Main",
 "nav.how": "How it works",
