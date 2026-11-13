@@ -539,6 +539,12 @@ html:not(.js) .occ-caps { display: none; }
 @media (min-width: 768px) and (max-width: 1199.98px) { .privacy .h2 { grid-column: 1 / 6; } .privacy-copy { grid-column: 1 / 8; } }
 @media (min-width: 1200px) { .privacy-grid { align-items: start; } .privacy .h2 { grid-column: 1 / 7; } .privacy-copy { grid-column: 7 / 13; } }  /* 1–6: TR "Fotoğraflarınla" is one 451 px word at 1200 */
 
+.whatis { padding-top: 0; }
+.whatis-grid { row-gap: 28px; border-top: 1px solid var(--line); padding-top: var(--section); }
+.whatis-copy .lead { max-width: 36em; }
+@media (min-width: 768px) and (max-width: 1199.98px) { .whatis .h2 { grid-column: 1 / 6; } .whatis-copy { grid-column: 1 / 8; } }
+@media (min-width: 1200px) { .whatis-grid { align-items: start; } .whatis .h2 { grid-column: 1 / 7; } .whatis-copy { grid-column: 7 / 13; } }
+
 /* ================================================================ 10 · FAQ */
 .faq-sec { padding-top: 0; }
 .faq-grid { row-gap: 40px; border-top: 1px solid var(--line); padding-top: var(--section); }

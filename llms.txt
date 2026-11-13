@@ -40,6 +40,7 @@ Every plan includes the live shared gallery, QR & code, disposable mode and a fu
 - [Pricing](https://allshots.app/pricing.html): the four plans compared, and how to buy in the app or on the web
 - [Host guide](https://allshots.app/host-guide.html): ready-made wording for telling your guests that photos are being collected
 - [Guides](https://allshots.app/guides/): all guides and use cases
+- [Compare AllShots](https://allshots.app/compare/): dated comparisons with other guest photo sharing apps; every competitor detail links to its source
 - [AllShots on the App Store](https://apps.apple.com/app/id6777402204): the iPhone app
 - [Host dashboard](https://host.allshots.app/): create your event and buy a plan on the web
 - [Have a code?](https://allshots.app/app/): the guest camera in the phone’s browser
@@ -63,6 +64,20 @@ Every plan includes the live shared gallery, QR & code, disposable mode and a fu
 - [Prom photo sharing: one album for the whole night](https://allshots.app/use-cases/prom-photo-sharing.html): Pre-prom photos, the dance and the after-party in one album, with the committee in control.
 - [Homecoming photo sharing: the game, the dance and the reunion in one album](https://allshots.app/use-cases/homecoming-photo-sharing.html): One code for the whole weekend: parade, game, dance and the alumni tailgate.
 - [Party photo sharing app: every guest’s photos in one live album](https://allshots.app/use-cases/party-photo-sharing-app.html): Dinner parties, engagements, retirements, reunions: one QR, one live album.
+- [Christmas party photo sharing: one QR code, every guest’s photos](https://allshots.app/use-cases/christmas-party-photo-sharing.html): One QR code by the tree; guests join from the phone’s browser and every photo lands in one album.
+- [New Year’s Eve party photo sharing: every phone, one album](https://allshots.app/use-cases/new-years-eve-party-photo-sharing.html): The countdown from every corner of the room, in one album by morning.
+- [Thanksgiving and Friendsgiving photo sharing with one QR code](https://allshots.app/use-cases/thanksgiving-friendsgiving-photo-sharing.html): Three generations at one table; grandparents join from the browser, with no app or account.
+
+## Comparisons
+
+AllShots is our app. Competitor details on these pages come from each company’s own website, pricing page, help center or US App Store listing, checked November 13, 2026, with a link to each source.
+
+- [Best QR Code Wedding Photo Sharing Apps (2026), Compared](https://allshots.app/compare/best-wedding-photo-sharing-apps.html): AllShots, GuestPix, Wedibox, Kululu, POV, Lense, WedUploader, Guestreel and Google Photos shared albums in one table (guest app or account, video, full-resolution download, live slideshow, price model, free tier), with a “best for” line for each.
+- [POV Alternative: AllShots vs POV (2026)](https://allshots.app/compare/pov-alternative.html): prices by guest count and features side by side, and when POV is the better pick.
+- [GuestPix Alternative: AllShots vs GuestPix (2026)](https://allshots.app/compare/guestpix-alternative.html): plans, original files, slideshow and hosting, and when GuestPix is the better pick.
+- [Wedibox Alternative: AllShots vs Wedibox (2026)](https://allshots.app/compare/wedibox-alternative.html): plan by plan, and when Wedibox’s RSVP, seating chart and wedding website make it the better pick.
+- [Kululu Alternative: AllShots vs Kululu (2026)](https://allshots.app/compare/kululu-alternative.html): upload limits, how long photos stay and the live photo wall, and when Kululu is the better pick.
+- [Google Photos Shared Album for a Wedding? Pros, Cons and a No-Account Option](https://allshots.app/compare/google-photos-shared-album-wedding.html): what Google’s own help pages say, and when a no-account QR album fits better.
 
 ## Optional
 
